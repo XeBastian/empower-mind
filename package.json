@@ -11,11 +11,13 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "build": "astro check && astro build",
-    "preview": "astro preview",
-    "deploy": "pnpm build && wrangler pages deploy dist --project-name=empower-mind",
-    "deploy:preview": "pnpm build && wrangler pages deploy dist --project-name=empower-mind --branch=preview"
+    "preview": "pnpm run build && wrangler dev",
+    "deploy": "pnpm run build && wrangler deploy",
+    "deploy:preview": "pnpm build && wrangler pages deploy dist --project-name=empower-mind --branch=preview",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.1.2",
     "@astrojs/sitemap": "latest",
     "astro": "latest"
   },
@@ -25,7 +27,7 @@
     "prettier-plugin-astro": "latest",
     "typescript": "^5.9.3",
     "vitest": "latest",
-    "wrangler": "latest"
+    "wrangler": "^4.110.0"
   },
   "engines": {
     "node": ">=22"
