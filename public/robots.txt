@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://empower-mind.pages.dev/sitemap-index.xml

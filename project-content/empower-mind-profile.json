@@ -1,0 +1,164 @@
+{
+  "source": {
+    "file": "project-content/source/empower-mind-organizational-profile-january-2026.docx",
+    "documentDate": "2026-01",
+    "status": "authoritative-working-source"
+  },
+  "organization": {
+    "officialProfileName": "Empower Mind Initiative",
+    "publicShortName": "Empower Mind",
+    "focus": "Youth mental health and psychosocial well-being",
+    "geographicCoverage": {
+      "pilot": "Zomba District",
+      "region": "Southern Region, Malawi",
+      "ambition": "National reach",
+      "sourcePages": [1]
+    },
+    "vision": "To be a leading youth-focused organization shaping mentally healthy, resilient, and empowered generations while supporting vulnerable populations in Malawi and beyond.",
+    "mission": "To improve the mental health and psychosocial well-being of adolescents, youth, and vulnerable communities in Malawi and beyond through accessible services, community empowerment, research, and advocacy.",
+    "contact": {
+      "email": "empowermindtherapy@gmail.com",
+      "phones": ["+265 990 532 201", "+265 884 218 155"],
+      "sourcePages": [1]
+    }
+  },
+  "objectives": {
+    "general": "To promote holistic mental health, psychosocial well-being, and social resilience among vulnerable populations in Malawi and beyond through accessible services, community empowerment, research, and advocacy.",
+    "specific": [
+      "Provide accessible, affordable, and quality mental-health counselling, therapy, and psychosocial support.",
+      "Raise awareness and promote mental-health education across community and institutional settings.",
+      "Prevent suicide and self-harm through prevention, early identification, referral, and peer-support structures.",
+      "Engage in advocacy and policy dialogue.",
+      "Strengthen community-based support systems through training.",
+      "Support children and youth affected by mental-health and socioeconomic challenges to remain in education.",
+      "Conduct and support research for evidence-based interventions and policy engagement."
+    ],
+    "sourcePages": [2, 3]
+  },
+  "programs": [
+    {
+      "slug": "empower-mind-chapters",
+      "title": "Empower Mind Chapters",
+      "type": "chapter-model",
+      "statusClaim": "established",
+      "institutions": [
+        "University of Malawi (UNIMA)",
+        "Malawi University of Business and Applied Sciences (MUBAS)",
+        "Domasi College of Education",
+        "Lilongwe University of Agriculture and Natural Resources (LUANAR)",
+        "Catholic University of Malawi (CU)"
+      ],
+      "sourcePages": [3, 4]
+    },
+    {
+      "slug": "suicide-prevention-university-students",
+      "title": "Suicide Prevention Among University Students",
+      "type": "prevention-project",
+      "deliveryChannel": "Existing Empower Mind chapters",
+      "sourcePages": [4]
+    },
+    {
+      "slug": "school-mental-health-career-guidance",
+      "title": "Mental Health Awareness Campaigns and Career Guidance in Schools",
+      "type": "school-programme",
+      "settings": ["Primary schools", "Secondary schools"],
+      "sourcePages": [4, 5]
+    }
+  ],
+  "implementationTimeline": {
+    "period": "January–December 2026",
+    "status": "planned",
+    "suppliedBy": "user-confirmed project content",
+    "phases": [
+      {
+        "period": "January–March 2026",
+        "title": "University Engagement and Chapter Strengthening",
+        "activities": [
+          "Strengthening coordination of existing Empower Mind chapters at UNIMA, MUBAS, Domasi, LUANAR, and CU",
+          "Engagement with university management and student representative bodies",
+          "Orientation and capacity-building meetings for chapter leaders and members"
+        ]
+      },
+      {
+        "period": "April–June 2026",
+        "title": "School-Based Mental Health and Career Guidance",
+        "activities": [
+          "Mental-health awareness campaigns in selected primary and secondary schools",
+          "Career-guidance and life-skills sessions for learners",
+          "Engagement with teachers and school administrations",
+          "Distribution of mental-health education materials"
+        ]
+      },
+      {
+        "period": "July–September 2026",
+        "title": "Suicide Prevention among University Students",
+        "activities": [
+          "Roll-out of suicide-prevention interventions in universities",
+          "Awareness sessions, peer-support activities, and early identification of at-risk students",
+          "Data collection, documentation, and analysis",
+          "Participation in Suicide Prevention Month activities in September"
+        ]
+      },
+      {
+        "period": "August 2026",
+        "title": "Official Launch of Empower Mind",
+        "activities": [
+          "Planning and coordination of the official launch event",
+          "Invitation of government, academic institutions, civil society, partners, and youth stakeholders",
+          "Media engagement and stakeholder visibility"
+        ]
+      },
+      {
+        "period": "August–December 2026",
+        "title": "Stakeholder Engagement and Collaboration",
+        "activities": [
+          "Continued engagement with stakeholders following the planned launch",
+          "Partnership-building and coordination meetings",
+          "Participation in relevant policy-dialogue platforms and technical meetings"
+        ]
+      }
+    ]
+  },
+  "waysOfWorking": [
+    "Accessible services",
+    "Community empowerment",
+    "Youth engagement",
+    "Advocacy",
+    "Research",
+    "Systems strengthening",
+    "Referral pathways",
+    "Peer support",
+    "Training and mentorship"
+  ],
+  "accountability": {
+    "approach": "Results-based monitoring and evaluation",
+    "reporting": "Quarterly implementation reports to the Ministry of Health",
+    "dataSources": ["Attendance registers", "Activity reports", "Referral logs", "Feedback tools"],
+    "principles": ["Ethical standards", "Confidentiality", "Safeguarding", "Informed consent"],
+    "sourcePages": [7]
+  },
+  "sustainability": {
+    "methods": [
+      "Capacity building",
+      "Institutionalized chapters",
+      "Cross-sector partnerships",
+      "Documentation, learning, and research",
+      "Gradual geographic expansion"
+    ],
+    "sourcePages": [7, 8]
+  },
+  "publicationRestrictions": {
+    "doNotInvent": [
+      "Impact numbers",
+      "Testimonials",
+      "Team roles",
+      "Registration details",
+      "Partners or funders",
+      "Crisis contacts",
+      "Exact launch event details",
+      "Donation or volunteering mechanisms",
+      "Public reports",
+      "Photography rights"
+    ]
+  }
+}

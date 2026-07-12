@@ -1,0 +1,16 @@
+---
+import ContentPending from '@/components/editorial/ContentPending.astro';
+import PageLead from '@/components/editorial/PageLead.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Resources">
+  <PageLead
+    eyebrow="Resources"
+    title="Useful information must be clear, reviewed, and safe."
+    summary="Resources will be organized by audience, topic, format, language, and review date."
+  />
+  <ContentPending
+    title="No clinical, referral, or crisis information will be published without local verification and an approved maintenance process."
+  />
+</BaseLayout>

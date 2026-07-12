@@ -1,0 +1,44 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'This section is being prepared from verified organization material.' } =
+  Astro.props;
+---
+
+<section class="pending container" aria-labelledby="pending-title">
+  <div>
+    <p class="eyebrow">Content status</p>
+    <h2 id="pending-title">{title}</h2>
+  </div>
+  <p>
+    Programs, evidence, stories, services, partners, and action pathways will appear only after they
+    have been confirmed and approved. The project source tracks these gaps rather than inventing
+    public claims.
+  </p>
+</section>
+
+<style>
+  .pending {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 0.8fr);
+    gap: var(--space-6);
+    padding-block: var(--space-7);
+    border-top: var(--rule);
+  }
+
+  .pending h2 {
+    font-size: clamp(2rem, 4vw, 3.8rem);
+  }
+
+  .pending > p {
+    color: var(--muted-ink);
+  }
+
+  @media (max-width: 48rem) {
+    .pending {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,8 @@
+{
+  "name": "Empower Mind",
+  "short_name": "Empower Mind",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f2efe6",
+  "theme_color": "#f2efe6"
+}

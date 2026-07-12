@@ -1,0 +1,258 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
+
+const galleryThemes = [
+  {
+    number: '01',
+    title: 'Youth participation',
+    note: 'Leadership, peer support, and shared learning',
+  },
+  { number: '02', title: 'Campus chapters', note: 'Institutional life and chapter activity' },
+  { number: '03', title: 'Schools', note: 'Awareness, learning, and career guidance' },
+  { number: '04', title: 'Research & systems', note: 'Documentation, advocacy, and collaboration' },
+];
+---
+
+<BaseLayout
+  title="Gallery"
+  description="The Empower Mind documentary gallery is being prepared from approved, rights-cleared photography of youth participation, learning, chapters, and systems work."
+>
+  <section class="gallery-hero">
+    <div class="container gallery-lead" data-reveal="immediate">
+      <p class="eyebrow">Gallery</p>
+      <h1>The work should be seen with care.</h1>
+      <div class="lead-copy">
+        <p class="lede">
+          This gallery is reserved for real, consented documentary photography connected to Empower
+          Mind’s work.
+        </p>
+        <p>Participation over performance.<br />Context over cliché.</p>
+      </div>
+    </div>
+    <div class="gallery-orbit" aria-hidden="true"><i data-parallax="0.04"></i><i></i></div>
+  </section>
+
+  <section class="gallery-status">
+    <div class="container status-grid" data-reveal>
+      <p class="eyebrow">Current media status</p>
+      <h2>Photography will appear after rights and consent are verified.</h2>
+      <p>
+        No approved photographs or completed asset-register entries are currently available in the
+        project. The site will not substitute stock imagery or synthetic people.
+      </p>
+    </div>
+  </section>
+
+  <section class="gallery-field" aria-labelledby="gallery-themes">
+    <div class="container">
+      <header data-reveal>
+        <p class="eyebrow">The future archive</p>
+        <h2 id="gallery-themes">Four documentary themes.</h2>
+      </header>
+      <div class="media-grid">
+        {
+          galleryThemes.map((theme, index) => (
+            <article data-reveal style={`--reveal-delay: ${index * 75}ms`}>
+              <div class="media-space" aria-hidden="true">
+                <span>{theme.number}</span>
+              </div>
+              <p class="theme-number">Theme {theme.number}</p>
+              <h3>{theme.title}</h3>
+              <p>{theme.note}</p>
+              <span class="media-state">Awaiting approved media</span>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-contact">
+    <div class="container contact-grid" data-reveal>
+      <div>
+        <p class="eyebrow">Contribute responsibly</p>
+        <h2>Have approved Empower Mind media?</h2>
+      </div>
+      <div>
+        <p>
+          Contact the organization to discuss ownership, consent, captions, credits, locations, and
+          approved uses before material is published.
+        </p>
+        <a class="button-link" href={`mailto:${site.contact.email}?subject=Gallery media enquiry`}
+          >Discuss gallery media</a
+        >
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery-hero {
+    position: relative;
+    min-height: 46rem;
+    overflow: hidden;
+    padding: 10rem 0 var(--space-7);
+    background: var(--paper);
+  }
+  .gallery-lead {
+    position: relative;
+    z-index: 1;
+  }
+  .gallery-lead h1 {
+    max-width: 11ch;
+  }
+  .lead-copy {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-6);
+    margin-top: var(--space-6);
+  }
+  .lead-copy > p:last-child {
+    align-self: end;
+    font-size: var(--step--1);
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .gallery-orbit i {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+  }
+  .gallery-orbit i:first-child {
+    right: -8rem;
+    bottom: -8rem;
+    width: min(34vw, 29rem);
+    aspect-ratio: 1;
+    border: 7rem solid var(--navy-950);
+  }
+  .gallery-orbit i:last-child {
+    top: 18%;
+    right: 23%;
+    width: 7rem;
+    aspect-ratio: 1;
+    background: var(--coral);
+  }
+  .gallery-status {
+    padding-block: var(--space-7);
+    background: var(--sky);
+  }
+  .status-grid {
+    display: grid;
+    grid-template-columns: 0.4fr 1.1fr 0.7fr;
+    gap: var(--space-6);
+  }
+  .status-grid h2 {
+    max-width: 13ch;
+    margin: 0;
+    font-size: var(--step-3);
+  }
+  .gallery-field {
+    padding-block: var(--space-8);
+    background: var(--cream);
+  }
+  .gallery-field header {
+    display: grid;
+    grid-template-columns: 0.4fr 1.6fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-7);
+  }
+  .media-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-5);
+  }
+  .media-grid article:nth-child(3) {
+    grid-column: 2;
+  }
+  .media-grid article:nth-child(4) {
+    grid-row: 2 / span 2;
+  }
+  .media-space {
+    position: relative;
+    min-height: clamp(16rem, 32vw, 30rem);
+    overflow: hidden;
+    margin-bottom: var(--space-4);
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+  .media-grid article:nth-child(2) .media-space,
+  .media-grid article:nth-child(3) .media-space {
+    min-height: 16rem;
+  }
+  .media-space::before,
+  .media-space::after {
+    position: absolute;
+    content: '';
+  }
+  .media-space::before {
+    inset: 15%;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+  }
+  .media-space::after {
+    width: 40%;
+    aspect-ratio: 1;
+    right: -10%;
+    bottom: -10%;
+    border-radius: 50%;
+    background: var(--amber-soft);
+  }
+  .media-space span {
+    position: absolute;
+    z-index: 1;
+    bottom: var(--space-3);
+    left: var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--step-4);
+  }
+  .theme-number,
+  .media-state {
+    font-size: var(--step--1);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .media-grid h3 {
+    margin-bottom: var(--space-2);
+  }
+  .media-state {
+    display: inline-block;
+    margin-top: var(--space-2);
+    color: var(--muted-ink);
+  }
+  .gallery-contact {
+    padding-block: var(--space-8);
+    background: var(--coral);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-7);
+    align-items: end;
+  }
+  .contact-grid h2 {
+    max-width: 12ch;
+  }
+  @media (max-width: 48rem) {
+    .gallery-hero {
+      min-height: 40rem;
+    }
+    .lead-copy,
+    .status-grid,
+    .gallery-field header,
+    .media-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .media-grid article:nth-child(3),
+    .media-grid article:nth-child(4) {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .gallery-orbit {
+      opacity: 0.2;
+    }
+  }
+</style>

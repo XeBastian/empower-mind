@@ -1,0 +1,322 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
+---
+
+<BaseLayout
+  title="Programmes"
+  description="Explore Empower Mind Chapters, university-student suicide prevention, and school mental-health awareness and career guidance programmes in Malawi."
+>
+  <section class="programme-hero">
+    <div class="container programme-lead" data-reveal="immediate">
+      <p class="eyebrow">Programmes</p><h1>
+        Work designed around where young people learn and connect.
+      </h1><p class="lede">
+        Three confirmed programme areas link campuses, prevention, schools, peer support, and
+        referral pathways.
+      </p>
+    </div><div class="programme-signal" aria-hidden="true"><span>03</span><i></i></div>
+  </section>
+
+  <nav class="programme-index" aria-label="Programme index">
+    <div class="container">
+      <a href="#chapters">01 Chapters</a><a href="#prevention">02 Prevention</a><a href="#schools"
+        >03 Schools</a
+      >
+    </div>
+  </nav>
+
+  <section id="chapters" class="programme-section chapters">
+    <div class="container programme-grid">
+      <div data-reveal>
+        <p class="programme-number">Programme 01 · Established chapter model</p><h2>
+          Empower Mind Chapters
+        </h2><p class="lede">
+          An institutionalized model across five higher-education institutions, connected to the
+          organization’s peer-support, referral, training, and mentorship approach.
+        </p><a
+          class="button-link"
+          href={`mailto:${site.contact.email}?subject=Empower Mind Chapters enquiry`}
+          >Ask about chapters</a
+        >
+      </div><ol class="institution-list" aria-label="Chapter institutions">
+        {
+          site.chapters.map((chapter, index) => (
+            <li data-reveal style={`--reveal-delay: ${index * 60}ms`}>
+              <>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <strong>{chapter}</strong>
+              </>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section id="prevention" class="programme-section prevention">
+    <div class="container prevention-grid">
+      <div class="prevention-mark" aria-hidden="true" data-reveal><i></i><span>02</span></div><div
+        data-reveal
+      >
+        <p class="programme-number">Programme 02 · University settings</p><h2>
+          Suicide Prevention Among University Students
+        </h2><p class="lede">
+          This prevention project is delivered through the existing Empower Mind chapter network.
+        </p><div class="method-line">
+          <span>Prevention</span><span>Early identification</span><span>Referral</span><span
+            >Peer support</span
+          >
+        </div><p class="status-note">
+          Participation criteria, dates, and programme-specific contact routes have not yet been
+          published. The confirmed organization email is available for enquiries.
+        </p><a
+          class="button-link"
+          href={`mailto:${site.contact.email}?subject=University suicide prevention programme enquiry`}
+          >Make an enquiry</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section id="schools" class="programme-section schools">
+    <div class="container schools-grid">
+      <header data-reveal>
+        <p class="programme-number">Programme 03 · Primary and secondary schools</p><h2>
+          Mental Health Awareness Campaigns and Career Guidance in Schools
+        </h2>
+      </header><div class="school-copy" data-reveal>
+        <p class="lede">
+          A school programme bringing mental-health awareness and career guidance into primary- and
+          secondary-school settings.
+        </p><div class="school-settings">
+          <span>Primary schools</span><span>Secondary schools</span>
+        </div><p class="status-note">
+          School locations, schedules, access criteria, and delivery details remain unpublished and
+          are not implied here.
+        </p><a
+          class="button-link"
+          href={`mailto:${site.contact.email}?subject=School programme enquiry`}
+          >Contact Empower Mind</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="programme-trust">
+    <div class="container trust-grid" data-reveal>
+      <div>
+        <p class="eyebrow">Across the work</p><h2>Accountability travels with delivery.</h2>
+      </div><div>
+        <p>
+          Empower Mind’s stated approach includes results-based monitoring and evaluation, quarterly
+          implementation reporting to the Ministry of Health, attendance registers, activity
+          reports, referral logs, and feedback tools.
+        </p><p>
+          <strong>Principles:</strong> ethical standards, confidentiality, safeguarding, and informed
+          consent.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .programme-hero {
+    position: relative;
+    min-height: 44rem;
+    overflow: hidden;
+    padding: 10rem 0 var(--space-7);
+    background: var(--paper);
+  }
+  .programme-lead {
+    position: relative;
+    z-index: 1;
+  }
+  .programme-lead h1 {
+    max-width: 13ch;
+  }
+  .programme-signal {
+    position: absolute;
+    right: var(--page-gutter);
+    bottom: 2rem;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: var(--step-4);
+  }
+  .programme-signal i {
+    width: 7rem;
+    aspect-ratio: 1;
+    margin-left: -1rem;
+    border: 1.8rem solid var(--coral);
+    border-radius: 50%;
+  }
+  .programme-index {
+    position: sticky;
+    z-index: 15;
+    top: 5rem;
+    border-block: 1px solid var(--line);
+    background: rgba(248, 244, 236, 0.92);
+    backdrop-filter: blur(14px);
+  }
+  .programme-index .container {
+    display: flex;
+    gap: var(--space-5);
+    overflow-x: auto;
+    padding-block: 0.8rem;
+  }
+  .programme-index a {
+    flex: 0 0 auto;
+    font-size: var(--step--1);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .programme-section {
+    scroll-margin-top: 9rem;
+    padding-block: var(--space-8);
+  }
+  .programme-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: var(--space-7);
+  }
+  .programme-number {
+    font-size: var(--step--1);
+    font-weight: 850;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .programme-section h2 {
+    max-width: 12ch;
+  }
+  .chapters {
+    background: var(--navy-950);
+    color: var(--cream);
+  }
+  .institution-list {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(248, 244, 236, 0.35);
+    list-style: none;
+  }
+  .institution-list li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-3);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid rgba(248, 244, 236, 0.35);
+  }
+  .institution-list span {
+    font-size: var(--step--1);
+  }
+  .institution-list strong {
+    font-size: var(--step-1);
+    line-height: 1.3;
+  }
+  .prevention {
+    background: var(--cream);
+  }
+  .prevention-grid {
+    display: grid;
+    grid-template-columns: 0.65fr 1.2fr;
+    gap: var(--space-7);
+    align-items: center;
+  }
+  .prevention-mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 28rem;
+  }
+  .prevention-mark i {
+    position: absolute;
+    width: min(30vw, 22rem);
+    aspect-ratio: 1;
+    border: clamp(3rem, 6vw, 5rem) solid var(--sky);
+    border-radius: 50%;
+  }
+  .prevention-mark span {
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: var(--step-5);
+  }
+  .method-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-block: var(--space-5);
+  }
+  .method-line span,
+  .school-settings span {
+    padding: 0.45rem 0.75rem;
+    border: 1px solid currentColor;
+    border-radius: var(--radius-round);
+    font-size: var(--step--1);
+    font-weight: 750;
+  }
+  .status-note {
+    max-width: 42rem;
+    padding-left: var(--space-3);
+    border-left: 3px solid var(--coral);
+    color: var(--muted-ink);
+    font-size: var(--step--1);
+  }
+  .schools {
+    background: var(--sky);
+  }
+  .schools-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-7);
+    align-items: end;
+  }
+  .schools h2 {
+    max-width: 16ch;
+  }
+  .school-settings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-block: var(--space-5);
+  }
+  .programme-trust {
+    padding-block: var(--space-8);
+    background: var(--paper);
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+  }
+  .trust-grid h2 {
+    max-width: 11ch;
+  }
+  @media (max-width: 48rem) {
+    .programme-hero {
+      min-height: 40rem;
+    }
+    .programme-grid,
+    .prevention-grid,
+    .schools-grid,
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+    .programme-signal {
+      opacity: 0.25;
+    }
+    .prevention-mark {
+      min-height: 14rem;
+    }
+    .prevention-mark i {
+      width: 12rem;
+    }
+  }
+  @supports not (backdrop-filter: blur(1rem)) {
+    .programme-index {
+      background: var(--cream);
+    }
+  }
+</style>
