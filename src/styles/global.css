@@ -166,6 +166,23 @@ a:hover {
   transform: translate3d(0, var(--parallax-y, 0), 0);
   will-change: transform;
 }
+.orbit-motion {
+  border: 0 !important;
+}
+.orbit-motion::before {
+  position: absolute;
+  inset: 0;
+  border: var(--orbit-stroke, 2rem) solid var(--orbit-color, var(--navy-950));
+  border-right-color: var(--orbit-accent, var(--coral));
+  border-radius: 50%;
+  content: '';
+  animation: orbit-turn var(--orbit-duration, 24s) linear infinite;
+}
+@keyframes orbit-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
 @media (max-width: 30rem) {
   .button-link {
     width: 100%;
@@ -191,5 +208,8 @@ a:hover {
   }
   [data-parallax] {
     transform: none;
+  }
+  .orbit-motion::before {
+    animation: none;
   }
 }

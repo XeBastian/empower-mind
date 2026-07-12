@@ -4,7 +4,18 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: process.env.SITE_URL ?? 'https://empower-mind.pages.dev',
   output: 'static',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        ![
+          '/get-involved/',
+          '/impact-stories/',
+          '/research-advocacy/',
+          '/resources/',
+          '/what-we-do/',
+        ].some((path) => new URL(page).pathname === path),
+    }),
+  ],
   build: {
     inlineStylesheets: 'auto',
   },

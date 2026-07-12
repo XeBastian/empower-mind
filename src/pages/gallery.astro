@@ -30,7 +30,9 @@ const galleryThemes = [
         <p>Participation over performance.<br />Context over cliché.</p>
       </div>
     </div>
-    <div class="gallery-orbit" aria-hidden="true"><i data-parallax="0.04"></i><i></i></div>
+    <div class="gallery-orbit" aria-hidden="true">
+      <i class="orbit-motion" data-parallax="0.04"></i><i></i>
+    </div>
   </section>
 
   <section class="gallery-status">
@@ -125,7 +127,8 @@ const galleryThemes = [
     bottom: -8rem;
     width: min(34vw, 29rem);
     aspect-ratio: 1;
-    border: 7rem solid var(--navy-950);
+    --orbit-stroke: 7rem;
+    --orbit-duration: 38s;
   }
   .gallery-orbit i:last-child {
     top: 18%;

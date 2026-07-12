@@ -22,8 +22,9 @@ const timeline = profile.implementationTimeline;
       </div>
     </div>
     <div class="about-orbit">
-      <i data-parallax="0.04" aria-hidden="true"></i><i data-parallax="-0.03" aria-hidden="true"
-      ></i>
+      <i class="orbit-motion" data-parallax="0.04" aria-hidden="true"></i><i
+        data-parallax="-0.03"
+        aria-hidden="true"></i>
       <p class="about-context">Southern Region, Malawi<br />National ambition</p>
     </div>
   </section>
@@ -182,7 +183,8 @@ const timeline = profile.implementationTimeline;
     aspect-ratio: 1;
     right: -7rem;
     bottom: -5rem;
-    border: 6rem solid var(--navy-950);
+    --orbit-stroke: 6rem;
+    --orbit-duration: 36s;
   }
   .about-orbit i:last-child {
     width: 8rem;
@@ -434,7 +436,7 @@ const timeline = profile.implementationTimeline;
     .about-orbit i:first-child {
       right: -9rem;
       width: 20rem;
-      border-width: 5rem;
+      --orbit-stroke: 5rem;
     }
     .about-context {
       right: 1rem;

@@ -1,3 +1,2 @@
 asset_id,filename,asset_type,source,photographer_or_owner,rights_status,consent_status,people_identifiable,sensitive_context,capture_date,location,approved_uses,credit_text,alt_text,caption,focal_point,notes
-brand-logo,logo.jpg,logo,user supplied,,supplied-for-website,not-applicable,false,false,,,website identity,,"Empower Mind Initiative logo",,center,"JPEG source supplied at 775 by 775 pixels"
-brand-logo-transparent,logo-transparent.svg,logo derivative,derived from supplied logo.jpg,,supplied-for-website,not-applicable,false,false,,,website identity,,"Empower Mind Initiative logo",,center,"Transparent SVG web derivative; preserves the supplied raster artwork and removes its white field with an alpha filter; replace with original path-based artwork if supplied"
+brand-logo,logo.png,logo,user supplied,,supplied-for-website,not-applicable,false,false,,,website identity and favicon,,"Empower Mind Initiative logo",,center,"Transparent PNG supplied at 775 by 775 pixels"

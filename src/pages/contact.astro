@@ -15,7 +15,7 @@ import { site } from '@/data/site';
           enquiries, use one of Empower Mind’s confirmed contact routes.
         </p>
       </div><div class="contact-mark" aria-hidden="true" data-reveal="immediate">
-        <i data-parallax=".04"></i><span>↗</span>
+        <i class="orbit-motion" data-parallax=".04"></i><span>↗</span>
       </div>
     </div>
   </section>
@@ -102,10 +102,12 @@ import { site } from '@/data/site';
     position: absolute;
     width: min(28vw, 21rem);
     aspect-ratio: 1;
-    border: clamp(3rem, 6vw, 5rem) solid var(--coral);
-    border-right-color: var(--amber-soft);
     border-radius: 50%;
     transform: rotate(-25deg);
+    --orbit-color: var(--coral);
+    --orbit-accent: var(--amber-soft);
+    --orbit-stroke: clamp(3rem, 6vw, 5rem);
+    --orbit-duration: 26s;
   }
   .contact-mark span {
     z-index: 1;
@@ -206,7 +208,7 @@ import { site } from '@/data/site';
     }
     .contact-mark i {
       width: 11rem;
-      border-width: 2.5rem;
+      --orbit-stroke: 2.5rem;
     }
     .email-route {
       min-height: 14rem;

@@ -15,8 +15,27 @@ const {
   noindex = false,
 } = Astro.props;
 
-const pageTitle = title === 'Empower Mind' ? title : `${title} — Empower Mind`;
+const pageTitle =
+  title === 'Empower Mind'
+    ? 'Empower Mind | Youth mental health in Malawi'
+    : `${title} — Empower Mind`;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const socialImage = new URL('/brand/logos/logo.png', canonical);
+const organizationSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'NGO',
+  name: 'Empower Mind Initiative',
+  alternateName: 'Empower Mind',
+  url: new URL('/', canonical).href,
+  logo: socialImage.href,
+  email: 'empowermindtherapy@gmail.com',
+  telephone: ['+265 990 532 201', '+265 884 218 155'],
+  areaServed: {
+    '@type': 'Country',
+    name: 'Malawi',
+  },
+  description,
+});
 ---
 
 <!doctype html>
@@ -25,15 +44,29 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.u
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f8f4ec" />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#17213b" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/brand/logos/logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/brand/logos/logo.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Empower Mind" />
+    <meta property="og:locale" content="en_MW" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="775" />
+    <meta property="og:image:height" content="775" />
+    <meta property="og:image:alt" content="Empower Mind Initiative logo" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="Empower Mind Initiative logo" />
+    <script type="application/ld+json" is:inline set:html={organizationSchema} />
     <title>{pageTitle}</title>
   </head>
   <body>

@@ -23,7 +23,7 @@ import { site } from '@/data/site';
         </div>
       </div>
       <div class="hero-field" data-reveal="immediate">
-        <span class="hero-ring" data-parallax="0.045" aria-hidden="true"></span><span
+        <span class="hero-ring orbit-motion" data-parallax="0.045" aria-hidden="true"></span><span
           class="hero-sun"
           data-parallax="-0.035"
           aria-hidden="true"></span><span class="hero-band" aria-hidden="true"
@@ -234,8 +234,9 @@ import { site } from '@/data/site';
     aspect-ratio: 1;
     top: 10%;
     right: -5%;
-    border: clamp(3rem, 7vw, 7rem) solid var(--navy-950);
     border-radius: 50%;
+    --orbit-stroke: clamp(3rem, 7vw, 7rem);
+    --orbit-duration: 32s;
   }
   .hero-sun {
     position: absolute;
@@ -579,7 +580,7 @@ import { site } from '@/data/site';
     }
     .hero-ring {
       width: 14rem;
-      border-width: 3.5rem;
+      --orbit-stroke: 3.5rem;
     }
     .hero-sun {
       right: auto;

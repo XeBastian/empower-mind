@@ -15,7 +15,9 @@ import { site } from '@/data/site';
         Three confirmed programme areas link campuses, prevention, schools, peer support, and
         referral pathways.
       </p>
-    </div><div class="programme-signal" aria-hidden="true"><span>03</span><i></i></div>
+    </div><div class="programme-signal" aria-hidden="true">
+      <span>03</span><i class="orbit-motion"></i>
+    </div>
   </section>
 
   <nav class="programme-index" aria-label="Programme index">
@@ -26,23 +28,35 @@ import { site } from '@/data/site';
     </div>
   </nav>
 
-  <section id="chapters" class="programme-section chapters">
+  <section id="chapters" class="programme-section chapters" data-chapter-story>
     <div class="container programme-grid">
-      <div data-reveal>
-        <p class="programme-number">Programme 01 · Established chapter model</p><h2>
-          Empower Mind Chapters
-        </h2><p class="lede">
-          An institutionalized model across five higher-education institutions, connected to the
-          organization’s peer-support, referral, training, and mentorship approach.
-        </p><a
-          class="button-link"
-          href={`mailto:${site.contact.email}?subject=Empower Mind Chapters enquiry`}
-          >Ask about chapters</a
-        >
+      <div class="chapter-stage">
+        <div class="chapter-seed-line" aria-hidden="true"></div>
+        <div class="chapter-panel" data-chapter-panel>
+          <span class="chapter-ghost" data-chapter-ghost aria-hidden="true">01</span>
+          <p class="programme-number">Programme 01 · Established chapter model</p><h2>
+            Empower Mind Chapters
+          </h2><p class="lede">
+            An institutionalized model across five higher-education institutions, connected to the
+            organization’s peer-support, referral, training, and mentorship approach.
+          </p>
+          <p class="chapter-progress" aria-hidden="true">
+            Chapter <strong data-chapter-counter>01</strong> of 05
+          </p>
+          <a
+            class="button-link"
+            href={`mailto:${site.contact.email}?subject=Empower Mind Chapters enquiry`}
+            >Ask about chapters</a
+          >
+        </div>
       </div><ol class="institution-list" aria-label="Chapter institutions">
         {
           site.chapters.map((chapter, index) => (
-            <li data-reveal style={`--reveal-delay: ${index * 60}ms`}>
+            <li
+              data-reveal
+              data-chapter-index={index + 1}
+              style={`--reveal-delay: ${index * 60}ms`}
+            >
               <>
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <strong>{chapter}</strong>
@@ -56,9 +70,9 @@ import { site } from '@/data/site';
 
   <section id="prevention" class="programme-section prevention">
     <div class="container prevention-grid">
-      <div class="prevention-mark" aria-hidden="true" data-reveal><i></i><span>02</span></div><div
-        data-reveal
-      >
+      <div class="prevention-mark" aria-hidden="true" data-reveal>
+        <i class="orbit-motion"></i><span>02</span>
+      </div><div data-reveal>
         <p class="programme-number">Programme 02 · University settings</p><h2>
           Suicide Prevention Among University Students
         </h2><p class="lede">
@@ -121,6 +135,61 @@ import { site } from '@/data/site';
   </section>
 </BaseLayout>
 
+<script>
+  const story = document.querySelector<HTMLElement>('[data-chapter-story]');
+  const rows = story?.querySelectorAll<HTMLElement>('[data-chapter-index]');
+  const counter = story?.querySelector<HTMLElement>('[data-chapter-counter]');
+  const ghost = story?.querySelector<HTMLElement>('[data-chapter-ghost]');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (story && rows?.length && counter && ghost && 'IntersectionObserver' in window) {
+    story.setAttribute('data-enhanced', '');
+    const storyObserver = new IntersectionObserver(
+      ([entry]) => story.classList.toggle('is-active', entry?.isIntersecting ?? false),
+      { rootMargin: '-12% 0px -12%', threshold: 0.08 },
+    );
+    storyObserver.observe(story);
+
+    let current = 1;
+    const renderNumber = (value: number) => {
+      const text = String(value).padStart(2, '0');
+      counter.textContent = text;
+      ghost.textContent = text;
+    };
+    const animateNumber = (next: number) => {
+      if (reducedMotion || next === current) {
+        current = next;
+        renderNumber(next);
+        return;
+      }
+      const start = current;
+      const startedAt = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - startedAt) / 320);
+        renderNumber(Math.round(start + (next - start) * progress));
+        if (progress < 1) requestAnimationFrame(tick);
+        else current = next;
+      };
+      requestAnimationFrame(tick);
+    };
+    const rowObserver = new IntersectionObserver(
+      (entries) => {
+        const active = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top),
+          )[0];
+        if (!active) return;
+        const next = Number((active.target as HTMLElement).dataset.chapterIndex);
+        rows.forEach((row) => row.toggleAttribute('data-current', row === active.target));
+        animateNumber(next);
+      },
+      { rootMargin: '-34% 0px -52%', threshold: 0.05 },
+    );
+    rows.forEach((row) => rowObserver.observe(row));
+  }
+</script>
+
 <style>
   .programme-hero {
     position: relative;
@@ -138,19 +207,24 @@ import { site } from '@/data/site';
   }
   .programme-signal {
     position: absolute;
-    right: var(--page-gutter);
-    bottom: 2rem;
+    top: 4.5rem;
+    right: -2.5rem;
     display: flex;
     align-items: center;
     font-family: var(--font-display);
-    font-size: var(--step-4);
+    font-size: var(--step-5);
+    color: rgba(23, 33, 59, 0.16);
   }
   .programme-signal i {
-    width: 7rem;
+    position: relative;
+    width: clamp(12rem, 20vw, 18rem);
     aspect-ratio: 1;
-    margin-left: -1rem;
-    border: 1.8rem solid var(--coral);
+    margin-left: -2.5rem;
     border-radius: 50%;
+    --orbit-color: var(--coral);
+    --orbit-accent: var(--amber-soft);
+    --orbit-stroke: clamp(2.5rem, 4vw, 4rem);
+    --orbit-duration: 22s;
   }
   .programme-index {
     position: sticky;
@@ -180,8 +254,9 @@ import { site } from '@/data/site';
   }
   .programme-grid {
     display: grid;
-    grid-template-columns: 0.85fr 1.15fr;
+    grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
     gap: var(--space-7);
+    align-items: start;
   }
   .programme-number {
     font-size: var(--step--1);
@@ -193,8 +268,89 @@ import { site } from '@/data/site';
     max-width: 12ch;
   }
   .chapters {
+    position: relative;
     background: var(--navy-950);
     color: var(--cream);
+  }
+  .chapter-stage {
+    position: sticky;
+    top: 9rem;
+    min-height: 34rem;
+  }
+  .chapter-seed-line {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--coral);
+    transform-origin: left;
+    transition:
+      opacity var(--motion-medium),
+      transform var(--motion-medium);
+  }
+  .chapter-panel {
+    position: relative;
+    min-height: 32rem;
+    overflow: hidden;
+    padding: var(--space-6);
+    border: 1px solid rgba(248, 244, 236, 0.28);
+    background: var(--cream);
+    color: var(--navy-950);
+  }
+  [data-chapter-story][data-enhanced] .chapter-panel {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    transform: translateX(2rem);
+    transition:
+      clip-path var(--motion-slow),
+      opacity var(--motion-medium),
+      transform var(--motion-slow);
+  }
+  [data-chapter-story][data-enhanced].is-active .chapter-panel {
+    clip-path: inset(0);
+    opacity: 1;
+    transform: none;
+  }
+  [data-chapter-story][data-enhanced].is-active .chapter-seed-line {
+    opacity: 0;
+    transform: scaleX(0.12);
+  }
+  .chapter-panel > *:not(.chapter-ghost) {
+    position: relative;
+    z-index: 1;
+  }
+  .chapter-panel h2 {
+    max-width: 9ch;
+  }
+  .chapter-panel .lede {
+    max-width: 30rem;
+    font-size: 1.08rem;
+  }
+  .chapter-ghost {
+    position: absolute;
+    right: -0.08em;
+    bottom: -0.18em;
+    color: rgba(23, 33, 59, 0.07);
+    font-family: var(--font-display);
+    font-size: clamp(11rem, 22vw, 20rem);
+    letter-spacing: -0.12em;
+    line-height: 0.75;
+    transition: opacity var(--motion-fast);
+  }
+  .chapter-progress {
+    margin: var(--space-5) 0 var(--space-3);
+    font-size: var(--step--1);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .chapter-progress strong {
+    display: inline-block;
+    min-width: 1.6rem;
+    color: var(--coral);
+    font-family: var(--font-display);
+    font-size: var(--step-1);
   }
   .institution-list {
     margin: 0;
@@ -206,8 +362,20 @@ import { site } from '@/data/site';
     display: grid;
     grid-template-columns: 3rem 1fr;
     gap: var(--space-3);
-    padding: var(--space-4) 0;
+    min-height: clamp(15rem, 38vh, 24rem);
+    padding: var(--space-6) 0;
     border-bottom: 1px solid rgba(248, 244, 236, 0.35);
+    align-content: center;
+    transition:
+      opacity var(--motion-medium),
+      transform var(--motion-medium);
+  }
+  .institution-list li:not([data-current]) {
+    opacity: 0.55;
+  }
+  .institution-list li[data-current] {
+    opacity: 1;
+    transform: translateX(-0.75rem);
   }
   .institution-list span {
     font-size: var(--step--1);
@@ -235,8 +403,11 @@ import { site } from '@/data/site';
     position: absolute;
     width: min(30vw, 22rem);
     aspect-ratio: 1;
-    border: clamp(3rem, 6vw, 5rem) solid var(--sky);
     border-radius: 50%;
+    --orbit-color: var(--sky);
+    --orbit-accent: var(--pink);
+    --orbit-stroke: clamp(3rem, 6vw, 5rem);
+    --orbit-duration: 28s;
   }
   .prevention-mark span {
     z-index: 1;
@@ -305,13 +476,45 @@ import { site } from '@/data/site';
       grid-template-columns: 1fr;
     }
     .programme-signal {
-      opacity: 0.25;
+      top: 4rem;
+      right: -5rem;
+      opacity: 0.28;
+    }
+    .programme-signal i {
+      width: 13rem;
+      --orbit-stroke: 3rem;
+    }
+    .chapter-stage {
+      position: relative;
+      top: auto;
+      min-height: auto;
+      margin-bottom: var(--space-6);
+    }
+    .chapter-seed-line {
+      display: none;
+    }
+    [data-chapter-story][data-enhanced] .chapter-panel,
+    [data-chapter-story][data-enhanced].is-active .chapter-panel {
+      clip-path: none;
+      opacity: 1;
+      transform: none;
+    }
+    .chapter-panel {
+      min-height: 27rem;
+      padding: var(--space-4);
+    }
+    .institution-list li {
+      min-height: auto;
+      padding-block: var(--space-5);
+      opacity: 1 !important;
+      transform: none !important;
     }
     .prevention-mark {
       min-height: 14rem;
     }
     .prevention-mark i {
       width: 12rem;
+      --orbit-stroke: 3rem;
     }
   }
   @supports not (backdrop-filter: blur(1rem)) {
