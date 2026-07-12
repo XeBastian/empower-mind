@@ -43,41 +43,47 @@ const timeline = profile.implementationTimeline;
     </div>
   </section>
 
-  <section class="work">
+  <section class="work" data-objective-story>
     <div class="container work-grid">
       <header data-reveal>
+        <span class="work-ghost" data-objective-ghost aria-hidden="true">01</span>
         <p class="eyebrow">What the organization is working towards</p><h2>
           Seven practical objectives. One connected direction.
         </h2>
+        <p class="work-progress" aria-hidden="true">
+          Objective <strong data-objective-counter>01</strong> of 07
+        </p>
       </header>
       <ol class="objective-list">
-        <li data-reveal>
+        <li data-reveal data-objective-index="1">
           <span>01</span><p>
             Accessible, affordable, quality counselling, therapy, and psychosocial support.
           </p>
         </li>
-        <li data-reveal>
+        <li data-reveal data-objective-index="2">
           <span>02</span><p>
             Mental-health awareness and education in communities and institutions.
           </p>
         </li>
-        <li data-reveal>
+        <li data-reveal data-objective-index="3">
           <span>03</span><p>
             Suicide and self-harm prevention through early identification, referral, and peer
             support.
           </p>
         </li>
-        <li data-reveal><span>04</span><p>Advocacy and policy dialogue.</p></li>
-        <li data-reveal>
+        <li data-reveal data-objective-index="4">
+          <span>04</span><p>Advocacy and policy dialogue.</p>
+        </li>
+        <li data-reveal data-objective-index="5">
           <span>05</span><p>Training that strengthens community-based support systems.</p>
         </li>
-        <li data-reveal>
+        <li data-reveal data-objective-index="6">
           <span>06</span><p>
             Support for children and young people facing mental-health and socioeconomic pressures
             to remain in education.
           </p>
         </li>
-        <li data-reveal>
+        <li data-reveal data-objective-index="7">
           <span>07</span><p>Research for evidence-based intervention and policy engagement.</p>
         </li>
       </ol>
@@ -155,6 +161,62 @@ const timeline = profile.implementationTimeline;
   </section>
 </BaseLayout>
 
+<script>
+  const objectiveStory = document.querySelector<HTMLElement>('[data-objective-story]');
+  const objectiveRows = objectiveStory?.querySelectorAll<HTMLElement>('[data-objective-index]');
+  const objectiveCounter = objectiveStory?.querySelector<HTMLElement>('[data-objective-counter]');
+  const objectiveGhost = objectiveStory?.querySelector<HTMLElement>('[data-objective-ghost]');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (
+    objectiveRows?.length &&
+    objectiveCounter &&
+    objectiveGhost &&
+    'IntersectionObserver' in window
+  ) {
+    objectiveStory?.setAttribute('data-enhanced', '');
+    let currentObjective = 1;
+    let animationFrame = 0;
+    const renderObjective = (value: number) => {
+      const text = String(value).padStart(2, '0');
+      objectiveCounter.textContent = text;
+      objectiveGhost.textContent = text;
+    };
+    const animateObjective = (next: number) => {
+      cancelAnimationFrame(animationFrame);
+      if (reducedMotion || next === currentObjective) {
+        currentObjective = next;
+        renderObjective(next);
+        return;
+      }
+      const start = currentObjective;
+      const startedAt = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - startedAt) / 340);
+        renderObjective(Math.round(start + (next - start) * progress));
+        if (progress < 1) animationFrame = requestAnimationFrame(tick);
+        else currentObjective = next;
+      };
+      animationFrame = requestAnimationFrame(tick);
+    };
+    const objectiveObserver = new IntersectionObserver(
+      (entries) => {
+        const active = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top),
+          )[0];
+        if (!active) return;
+        const next = Number((active.target as HTMLElement).dataset.objectiveIndex);
+        objectiveRows.forEach((row) => row.toggleAttribute('data-current', row === active.target));
+        animateObjective(next);
+      },
+      { rootMargin: '-34% 0px -52%', threshold: 0.05 },
+    );
+    objectiveRows.forEach((row) => objectiveObserver.observe(row));
+  }
+</script>
+
 <style>
   .about-hero {
     position: relative;
@@ -208,8 +270,9 @@ const timeline = profile.implementationTimeline;
   }
   .purpose {
     padding-block: var(--space-8);
-    background: var(--navy-950);
-    color: var(--cream);
+    border-block: 1px solid var(--line);
+    background: var(--pink);
+    color: var(--navy-950);
   }
   .purpose-grid {
     display: grid;
@@ -225,24 +288,66 @@ const timeline = profile.implementationTimeline;
     line-height: 1.02;
   }
   .purpose-grid > p:last-child {
-    color: rgba(248, 244, 236, 0.7);
+    color: var(--muted-ink);
   }
   .work {
     padding-block: var(--space-8);
-    background: var(--cream);
+    background: var(--paper);
+    color: var(--navy-950);
   }
   .work-grid {
     display: grid;
-    grid-template-columns: 0.75fr 1.25fr;
+    grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
     gap: var(--space-7);
+    align-items: start;
   }
   .work header {
     position: sticky;
-    top: 7rem;
+    top: 9rem;
     align-self: start;
+    min-height: 31rem;
+    overflow: hidden;
+    padding: var(--space-6);
+    border: 1px solid var(--navy-950);
+    background: var(--amber-soft);
+    box-shadow: 0.75rem 0.75rem 0 var(--coral);
+    color: var(--navy-950);
   }
   .work h2 {
-    max-width: 10ch;
+    position: relative;
+    z-index: 1;
+    max-width: 9ch;
+  }
+  .work header .eyebrow {
+    position: relative;
+    z-index: 1;
+    max-width: 24ch;
+  }
+  .work-progress {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--space-5);
+    font-size: var(--step--1);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .work-progress strong {
+    display: inline-block;
+    min-width: 1.7rem;
+    color: var(--coral);
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+  }
+  .work-ghost {
+    position: absolute;
+    right: -0.08em;
+    bottom: -0.18em;
+    color: rgba(23, 33, 59, 0.07);
+    font-family: var(--font-display);
+    font-size: clamp(12rem, 22vw, 20rem);
+    letter-spacing: -0.12em;
+    line-height: 0.75;
   }
   .objective-list {
     margin: 0;
@@ -254,10 +359,23 @@ const timeline = profile.implementationTimeline;
     display: grid;
     grid-template-columns: 4rem 1fr;
     gap: var(--space-3);
-    padding: var(--space-4) 0;
+    min-height: clamp(10rem, 22vh, 15rem);
+    padding: var(--space-5) 0;
     border-bottom: 1px solid var(--line);
+    align-content: center;
+    transition:
+      opacity var(--motion-medium),
+      transform var(--motion-medium);
+  }
+  [data-objective-story][data-enhanced] .objective-list li:not([data-current]) {
+    opacity: 0.48;
+  }
+  [data-objective-story][data-enhanced] .objective-list li[data-current] {
+    opacity: 1;
+    transform: translateX(-0.75rem);
   }
   .objective-list span {
+    color: var(--coral);
     font-size: var(--step--1);
     font-weight: 850;
   }
@@ -432,6 +550,14 @@ const timeline = profile.implementationTimeline;
     }
     .work header {
       position: static;
+      min-height: 25rem;
+      padding: var(--space-4);
+    }
+    .objective-list li {
+      min-height: auto;
+      padding-block: var(--space-5);
+      opacity: 1 !important;
+      transform: none !important;
     }
     .about-orbit i:first-child {
       right: -9rem;

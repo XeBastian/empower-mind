@@ -20,11 +20,12 @@ import { site } from '@/data/site';
     </div>
   </section>
 
-  <nav class="programme-index" aria-label="Programme index">
+  <nav class="programme-index" aria-label="Programme index" data-programme-index>
     <div class="container">
-      <a href="#chapters">01 Chapters</a><a href="#prevention">02 Prevention</a><a href="#schools"
-        >03 Schools</a
-      >
+      <a href="#chapters" data-programme-link="chapters">01 Chapters</a><a
+        href="#prevention"
+        data-programme-link="prevention">02 Prevention</a
+      ><a href="#schools" data-programme-link="schools">03 Schools</a>
     </div>
   </nav>
 
@@ -142,6 +143,34 @@ import { site } from '@/data/site';
   const ghost = story?.querySelector<HTMLElement>('[data-chapter-ghost]');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const programmeLinks = document.querySelectorAll<HTMLAnchorElement>('[data-programme-link]');
+  const programmeSections = document.querySelectorAll<HTMLElement>(
+    '#chapters, #prevention, #schools',
+  );
+  if (programmeLinks.length && programmeSections.length && 'IntersectionObserver' in window) {
+    const setCurrentProgramme = (id: string) => {
+      programmeLinks.forEach((link) => {
+        const current = link.dataset.programmeLink === id;
+        link.toggleAttribute('data-current', current);
+        if (current) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    const programmeObserver = new IntersectionObserver(
+      (entries) => {
+        const active = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top),
+          )[0];
+        if (active?.target.id) setCurrentProgramme(active.target.id);
+      },
+      { rootMargin: '-18% 0px -62%', threshold: 0.01 },
+    );
+    programmeSections.forEach((section) => programmeObserver.observe(section));
+    setCurrentProgramme(location.hash.slice(1) || 'chapters');
+  }
+
   if (story && rows?.length && counter && ghost && 'IntersectionObserver' in window) {
     story.setAttribute('data-enhanced', '');
     const storyObserver = new IntersectionObserver(
@@ -241,12 +270,57 @@ import { site } from '@/data/site';
     padding-block: 0.8rem;
   }
   .programme-index a {
+    position: relative;
     flex: 0 0 auto;
+    padding: 0.35rem 0 0.45rem 1rem;
+    color: var(--muted-ink);
     font-size: var(--step--1);
     font-weight: 800;
     letter-spacing: 0.08em;
     text-decoration: none;
     text-transform: uppercase;
+    transition:
+      color var(--motion-fast),
+      transform var(--motion-fast);
+  }
+  .programme-index a::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.42rem;
+    aspect-ratio: 1;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    content: '';
+    transform: translateY(-65%) scale(0.65);
+    transition:
+      background var(--motion-fast),
+      transform var(--motion-fast);
+  }
+  .programme-index a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 1rem;
+    height: 2px;
+    background: var(--coral);
+    content: '';
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--motion-medium);
+  }
+  .programme-index a[data-current] {
+    color: var(--navy-950);
+    transform: translateY(-1px);
+  }
+  .programme-index a[data-current]::before {
+    border-color: var(--coral);
+    background: var(--coral);
+    transform: translateY(-65%) scale(1);
+  }
+  .programme-index a[data-current]::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
   .programme-section {
     scroll-margin-top: 9rem;
