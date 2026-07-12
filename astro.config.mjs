@@ -1,9 +1,12 @@
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
+import cloudflare from '@astrojs/cloudflare';
+
 export default defineConfig({
   site: process.env.SITE_URL ?? 'https://empower-mind.pages.dev',
   output: 'static',
+
   integrations: [
     sitemap({
       filter: (page) =>
@@ -16,7 +19,10 @@ export default defineConfig({
         ].some((path) => new URL(page).pathname === path),
     }),
   ],
+
   build: {
     inlineStylesheets: 'auto',
   },
+
+  adapter: cloudflare(),
 });
