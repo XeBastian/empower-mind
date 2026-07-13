@@ -4,16 +4,24 @@ import { site } from '@/data/site';
 ---
 
 <BaseLayout
-  description="Empower Mind promotes youth mental health, psychosocial well-being, and social resilience from a Zomba District pilot towards national reach in Malawi."
+  description="Empower Mind Initiative is a youth-focused mental-health organization founded in November 2022 and working across Zomba and Machinga districts, Malawi."
 >
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy" data-reveal="immediate">
-        <p class="eyebrow">Youth mental health · Zomba District, Malawi</p>
-        <h1>Minds grow stronger when systems listen.</h1>
+        <p class="eyebrow">Youth mental health | Zomba & Machinga, Malawi</p>
+        <h1>Youth-led mental health action, rooted in Malawi.</h1>
         <p class="lede">
-          Empower Mind brings young people, communities, schools, universities, and public systems
-          into one connected response for psychosocial well-being.
+          Empower Mind Initiative brings young people, communities, schools, universities, and
+          public systems into one connected response for psychosocial well-being.
+        </p>
+        <p
+          class="hero-themes"
+          aria-label="Empowering young people, promoting mental well-being, and strengthening community resilience"
+        >
+          <span>Empowering young people</span><span>Promoting mental well-being</span><span
+            >Strengthening community resilience</span
+          >
         </p>
         <div class="hero-actions">
           <a class="button-link" href="/programs">Explore programmes</a><a
@@ -44,6 +52,30 @@ import { site } from '@/data/site';
       LISTEN DEEPLY · BUILD LOCALLY · LEARN OPENLY · LISTEN DEEPLY · BUILD LOCALLY · LEARN OPENLY ·
     </div>
   </div>
+
+  <section class="introduction" aria-labelledby="introduction-title">
+    <div class="container introduction-grid">
+      <div data-reveal>
+        <p class="eyebrow">About Empower Mind Initiative</p>
+        <h2 id="introduction-title">A growing youth-focused response.</h2>
+      </div>
+      <div class="introduction-copy" data-reveal>
+        <p class="lede">
+          Since our founding in November 2022, Empower Mind Initiative has reached more than 5,000
+          adolescents and young people across Zomba and Machinga districts.
+        </p>
+        <p>
+          Through a growing network of Mental Health Ambassadors in university chapters and
+          secondary schools, the organization advances peer-led support, mental-health education,
+          advocacy, research, and stronger community systems.
+        </p>
+        <div class="introduction-actions">
+          <a class="button-link button-link--quiet" href="/about">Read our story</a>
+          <a href="/impact-stories">See confirmed reach <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="context">
     <div class="container context-grid" data-reveal>
@@ -103,6 +135,10 @@ import { site } from '@/data/site';
           institutions. Peer support, referral pathways, training, and mentorship form part of the
           wider way of working.
         </p><a class="button-link" href="/programs">Understand the chapter model</a>
+        <p class="chapter-note">
+          <strong>More chapters coming soon.</strong><br />Empower Mind Initiative is continuing to
+          establish chapters in universities, secondary schools, and communities across Malawi.
+        </p>
       </div>
       <ol class="campus-list" aria-label="Institutions with Empower Mind Chapters">
         {
@@ -205,8 +241,8 @@ import { site } from '@/data/site';
   .hero h1 {
     max-width: 12ch;
     margin-bottom: var(--space-4);
-    font-size: clamp(3.4rem, 6.4vw, 6.4rem);
-    line-height: 0.9;
+    font-size: clamp(2.6rem, 4.2vw, 4rem);
+    line-height: 1;
   }
   .hero .lede {
     max-width: 39rem;
@@ -218,6 +254,39 @@ import { site } from '@/data/site';
     flex-wrap: wrap;
     gap: var(--space-3);
     margin-top: var(--space-4);
+  }
+  .hero-themes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+    margin: var(--space-4) 0 0;
+    font-size: var(--step--1);
+    font-weight: 800;
+  }
+  .hero-themes span {
+    opacity: 0;
+    animation: theme-enter 560ms both;
+  }
+  .hero-themes span:nth-child(2) {
+    animation-delay: 160ms;
+  }
+  .hero-themes span:nth-child(3) {
+    animation-delay: 320ms;
+  }
+  .hero-themes span:not(:last-child)::after {
+    margin-left: 1rem;
+    color: var(--coral);
+    content: '·';
+  }
+  @keyframes theme-enter {
+    from {
+      opacity: 0;
+      transform: translateY(0.65rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
   .hero-field {
     position: relative;
@@ -304,6 +373,32 @@ import { site } from '@/data/site';
     to {
       transform: translateX(-50%);
     }
+  }
+  .introduction {
+    padding-block: var(--space-8);
+    background: var(--paper);
+  }
+  .introduction-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: var(--space-7);
+    align-items: start;
+  }
+  .introduction h2 {
+    max-width: 12ch;
+  }
+  .introduction-copy {
+    max-width: 47rem;
+  }
+  .introduction-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+  .introduction-actions > a:last-child {
+    font-size: var(--step--1);
+    font-weight: 800;
   }
   .context {
     padding-block: var(--space-8);
@@ -401,6 +496,12 @@ import { site } from '@/data/site';
   }
   .chapters-intro h2 {
     max-width: 10ch;
+  }
+  .chapter-note {
+    max-width: 34rem;
+    margin-top: var(--space-4);
+    color: rgba(255, 248, 233, 0.78);
+    font-size: var(--step--1);
   }
   .campus-list {
     margin: 0;
@@ -544,6 +645,7 @@ import { site } from '@/data/site';
   }
   @media (max-width: 48rem) {
     .hero-grid,
+    .introduction-grid,
     .context-grid,
     .response-head,
     .chapters-grid,
@@ -561,7 +663,7 @@ import { site } from '@/data/site';
     }
     .hero h1 {
       max-width: 11ch;
-      font-size: clamp(3rem, 15vw, 4.6rem);
+      font-size: clamp(2.4rem, 11vw, 3rem);
     }
     .hero .lede {
       font-size: 1.05rem;
@@ -610,7 +712,7 @@ import { site } from '@/data/site';
     }
     .hero h1 {
       max-width: 13ch;
-      font-size: clamp(3.2rem, 6vw, 5rem);
+      font-size: clamp(2.6rem, 4.2vw, 3.75rem);
     }
     .hero .lede {
       font-size: 1.05rem;
@@ -630,6 +732,10 @@ import { site } from '@/data/site';
   }
   @media (prefers-reduced-motion: reduce) {
     .signal-band div {
+      animation: none;
+    }
+    .hero-themes span {
+      opacity: 1;
       animation: none;
     }
   }

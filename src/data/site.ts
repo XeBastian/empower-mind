@@ -1,7 +1,9 @@
 export type ContentStatus = 'confirmed' | 'provisional' | 'missing' | 'retired';
 
 export const site = {
-  name: 'Empower Mind',
+  name: 'Empower Mind Initiative',
+  shortName: 'Empower Mind',
+  founded: 'November 2022',
   shortDescription:
     'Youth-focused mental health, psychological well-being, and social resilience in Malawi and beyond.',
   url: 'https://empower-mind.pages.dev',
@@ -21,6 +23,16 @@ export const site = {
     'Lilongwe University of Agriculture and Natural Resources (LUANAR)',
     'Catholic University of Malawi (CU)',
   ],
+  impact: [
+    { value: '5,000+', label: 'adolescents and young people reached' },
+    { value: '5', label: 'university chapters' },
+    { value: '2', label: 'districts directly reached' },
+    { value: '2022', label: 'founded in November' },
+  ],
+  vision:
+    'To be a leading youth-focused organization shaping mentally healthy, resilient, and empowered generations while supporting vulnerable populations in Malawi and beyond.',
+  mission:
+    'To improve the mental health and psychosocial well-being of adolescents, youth, and vulnerable communities in Malawi and beyond through accessible services, community empowerment, research, and advocacy.',
   programs: [
     {
       number: '01',
@@ -82,10 +94,10 @@ export const site = {
 
 export const routeIntroductions = {
   about: {
-    eyebrow: 'About Empower Mind',
+    eyebrow: 'About Empower Mind Initiative',
     title: 'A youth-focused organization working toward mentally healthy, resilient generations.',
     summary:
-      'Empower Mind promotes mental health, psychological well-being, and social resilience among adolescents, young people, and other vulnerable populations in Malawi and beyond.',
+      'Empower Mind Initiative promotes mental health, psychological well-being, and social resilience among adolescents, young people, and other vulnerable populations in Malawi and beyond.',
   },
   whatWeDo: {
     eyebrow: 'Our response',

@@ -1,6 +1,8 @@
 ---
 import SiteFooter from '@/components/layout/SiteFooter.astro';
 import SiteHeader from '@/components/layout/SiteHeader.astro';
+import '@fontsource-variable/manrope/wght.css';
+import '@fontsource-variable/source-sans-3/wght.css';
 import '@/styles/global.css';
 
 interface Props {
@@ -10,15 +12,15 @@ interface Props {
 }
 
 const {
-  title = 'Empower Mind',
-  description = 'Empower Mind promotes mental health, psychological well-being, and social resilience among adolescents, young people, and vulnerable communities in Malawi and beyond.',
+  title = 'Empower Mind Initiative',
+  description = 'Empower Mind Initiative promotes mental health, psychosocial well-being, and social resilience among adolescents, young people, and vulnerable communities in Malawi.',
   noindex = false,
 } = Astro.props;
 
 const pageTitle =
-  title === 'Empower Mind'
-    ? 'Empower Mind | Youth mental health in Malawi'
-    : `${title} — Empower Mind`;
+  title === 'Empower Mind Initiative'
+    ? 'Empower Mind Initiative | Youth mental health in Malawi'
+    : `${title} — Empower Mind Initiative`;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
 const socialImage = new URL('/brand/logos/logo.png', canonical);
 const organizationSchema = JSON.stringify({
@@ -52,7 +54,7 @@ const organizationSchema = JSON.stringify({
     <link rel="apple-touch-icon" href="/brand/logos/logo.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Empower Mind" />
+    <meta property="og:site_name" content="Empower Mind Initiative" />
     <meta property="og:locale" content="en_MW" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />

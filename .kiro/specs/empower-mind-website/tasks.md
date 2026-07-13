@@ -6,7 +6,7 @@ Codex must update checkboxes as work is completed. Do not skip dependencies.
 
 - [x] 0.1 Inspect the existing repository, scripts, framework, routes, styles, and assets.
 - [x] 0.2 Compare the repository to `tech.md`; document any stack deviation before changing it.
-- [ ] 0.3 Convert all supplied organization information into structured content with confidence status.
+- [x] 0.3 Convert all supplied organization information into structured content with confidence status.
 - [x] 0.4 Update `project-content/content-gaps.md`; do not invent missing answers.
 - [x] 0.5 Produce a short audit report with risks and implementation sequence.
 

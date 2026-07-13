@@ -16,8 +16,8 @@ const timeline = profile.implementationTimeline;
       <h1>Well-being grows through people, places, and systems.</h1>
       <div class="lead-detail">
         <p class="lede">
-          Empower Mind promotes youth mental health and psychosocial well-being, beginning with a
-          pilot in Zomba District and working towards national reach.
+          Empower Mind Initiative promotes youth mental health and psychosocial well-being across
+          Zomba and Machinga districts, with an ambition to grow its reach across Malawi.
         </p>
       </div>
     </div>
@@ -29,17 +29,46 @@ const timeline = profile.implementationTimeline;
     </div>
   </section>
 
-  <section class="purpose">
+  <section class="overview" aria-labelledby="overview-title">
+    <div class="container overview-grid">
+      <div data-reveal>
+        <p class="eyebrow">Founded in November 2022</p>
+        <h2 id="overview-title">Youth-focused, community-connected.</h2>
+      </div>
+      <div class="overview-copy" data-reveal>
+        <p class="lede">
+          Empower Mind Initiative was founded as a youth-focused organization dedicated to mental
+          health, psychosocial well-being, and social resilience among adolescents, young people,
+          women, and other vulnerable populations.
+        </p>
+        <p>
+          Through community empowerment, youth engagement, advocacy, research, and systems
+          strengthening, the organization responds to pressures linked to education, unemployment,
+          climate shocks, and social inequality.
+        </p>
+        <p>
+          Since its founding, the organization has reached more than 5,000 adolescents and young
+          people across Zomba and Machinga districts through Mental Health Ambassadors in five
+          university chapters and secondary schools.
+        </p>
+        <a class="impact-link" href="/impact-stories"
+          >See confirmed reach and future stories <span aria-hidden="true">→</span></a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="purpose" aria-labelledby="purpose-title">
     <div class="container purpose-grid">
-      <p class="eyebrow" data-reveal>Purpose</p>
-      <blockquote data-reveal="wipe">
-        “To improve the mental health and psychosocial well-being of adolescents, youth, and
-        vulnerable communities.”
-      </blockquote>
-      <p data-reveal>
-        Empower Mind’s mission connects accessible services, community empowerment, research, and
-        advocacy across Malawi and beyond.
-      </p>
+      <p class="eyebrow" id="purpose-title" data-reveal>Mission & vision</p>
+      <article data-reveal>
+        <p class="purpose-label">Mission</p>
+        <blockquote>{site.mission}</blockquote>
+      </article>
+      <article data-reveal>
+        <p class="purpose-label">Vision</p>
+        <blockquote>{site.vision}</blockquote>
+      </article>
     </div>
   </section>
 
@@ -265,6 +294,25 @@ const timeline = profile.implementationTimeline;
     line-height: 1.6;
     text-transform: uppercase;
   }
+  .overview {
+    padding-block: var(--space-8);
+    background: var(--paper);
+  }
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: var(--space-7);
+  }
+  .overview h2 {
+    max-width: 11ch;
+  }
+  .overview-copy {
+    max-width: 48rem;
+  }
+  .impact-link {
+    font-size: var(--step--1);
+    font-weight: 800;
+  }
   .purpose {
     padding-block: var(--space-8);
     border-block: 1px solid var(--line);
@@ -273,19 +321,27 @@ const timeline = profile.implementationTimeline;
   }
   .purpose-grid {
     display: grid;
-    grid-template-columns: 0.35fr 1.3fr 0.6fr;
-    gap: var(--space-6);
+    grid-template-columns: 0.35fr 1fr 1fr;
+    gap: var(--space-5);
     align-items: start;
+  }
+  .purpose-grid article {
+    padding-top: var(--space-3);
+    border-top: 3px solid var(--navy-950);
   }
   blockquote {
     margin: 0;
     font-family: var(--font-display);
-    font-size: var(--step-3);
-    letter-spacing: -0.05em;
-    line-height: 1.02;
+    font-size: var(--step-1);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.35;
   }
-  .purpose-grid > p:last-child {
-    color: var(--muted-ink);
+  .purpose-label {
+    font-size: var(--step--1);
+    font-weight: 850;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .work {
     padding-block: var(--space-8);
@@ -538,6 +594,7 @@ const timeline = profile.implementationTimeline;
       min-height: 40rem;
     }
     .lead-detail,
+    .overview-grid,
     .purpose-grid,
     .work-grid,
     .timeline-intro,

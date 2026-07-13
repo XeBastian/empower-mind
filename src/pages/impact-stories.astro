@@ -1,20 +1,154 @@
 ---
 import ContentPending from '@/components/editorial/ContentPending.astro';
 import PageLead from '@/components/editorial/PageLead.astro';
+import { site } from '@/data/site';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
   title="Impact & stories"
-  description="Empower Mind stories and impact evidence will be published after evidence, consent, and safeguarding review."
-  noindex
+  description="Review the confirmed reach of Empower Mind Initiative and the evidence, consent, and safeguarding standards guiding future stories."
 >
   <PageLead
     eyebrow="Impact & stories"
-    title="Change should be shown with evidence, context, and consent."
-    summary="This space will bring together approved field stories, learning, and outcomes without turning people into promotional proof."
+    title="Reach is a starting point, not the whole story."
+    summary="Empower Mind Initiative has supplied an initial picture of its reach. Fuller outcomes and personal stories will be published only with supporting evidence and appropriate consent."
   />
+
+  <section class="reach" aria-labelledby="reach-title">
+    <div class="container reach-intro" data-reveal>
+      <div>
+        <p class="eyebrow">Confirmed reach</p>
+        <h2 id="reach-title">What is known so far.</h2>
+      </div>
+      <p>
+        Since November 2022, Empower Mind Initiative reports reaching more than 5,000 adolescents
+        and young people across Zomba and Machinga districts through university chapters, secondary
+        schools, and a growing network of Mental Health Ambassadors.
+      </p>
+    </div>
+    <dl class="container reach-facts">
+      {
+        site.impact.map((item, index) => (
+          <div data-reveal style={`--reveal-delay: ${index * 60}ms`}>
+            <dd>{item.value}</dd>
+            <dt>{item.label}</dt>
+          </div>
+        ))
+      }
+    </dl>
+    <p class="container evidence-note" data-reveal>
+      The measurement period and methodology behind the headline reach figure are awaiting
+      publication. No additional outcome claims are inferred from these figures.
+    </p>
+  </section>
+
   <ContentPending
-    title="Stories and impact claims are awaiting evidence, consent, and safeguarding review."
+    title="Personal stories and fuller outcomes are awaiting evidence, consent, and safeguarding review."
   />
 </BaseLayout>
+
+<style>
+  .reach {
+    padding-block: var(--space-7) var(--space-8);
+    background: var(--navy-950);
+    color: var(--cream);
+  }
+
+  .reach-intro {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  .reach-intro h2 {
+    max-width: 11ch;
+  }
+
+  .reach-intro > p {
+    max-width: 45rem;
+    color: rgba(255, 248, 233, 0.78);
+    font-size: var(--step-1);
+  }
+
+  .reach-facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: var(--space-7);
+    padding: 0;
+    border-block: 1px solid rgba(255, 248, 233, 0.42);
+  }
+
+  .reach-facts div {
+    min-height: 11rem;
+    padding: var(--space-4);
+    border-right: 1px solid rgba(255, 248, 233, 0.42);
+  }
+
+  .reach-facts div:last-child {
+    border-right: 0;
+  }
+
+  .reach-facts dd {
+    margin: 0 0 var(--space-4);
+    color: var(--amber-soft);
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 750;
+    line-height: 1;
+  }
+
+  .reach-facts dt {
+    max-width: 17ch;
+    font-size: var(--step--1);
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .evidence-note {
+    max-width: 52rem;
+    margin-top: var(--space-5);
+    margin-left: max(var(--page-gutter), calc((100% - var(--container)) / 2));
+    padding-left: var(--space-3);
+    border-left: 3px solid var(--coral);
+    color: rgba(255, 248, 233, 0.72);
+    font-size: var(--step--1);
+  }
+
+  @media (max-width: 48rem) {
+    .reach-intro {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    .reach-facts {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .reach-facts div:nth-child(2) {
+      border-right: 0;
+    }
+
+    .reach-facts div:nth-child(-n + 2) {
+      border-bottom: 1px solid rgba(255, 248, 233, 0.42);
+    }
+  }
+
+  @media (max-width: 24rem) {
+    .reach-facts {
+      grid-template-columns: 1fr;
+    }
+
+    .reach-facts div,
+    .reach-facts div:nth-child(2) {
+      min-height: 8rem;
+      border-right: 0;
+      border-bottom: 1px solid rgba(255, 248, 233, 0.42);
+    }
+
+    .reach-facts div:last-child {
+      border-bottom: 0;
+    }
+  }
+</style>

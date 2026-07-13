@@ -7,6 +7,7 @@
   "organization": {
     "officialProfileName": "Empower Mind Initiative",
     "publicShortName": "Empower Mind",
+    "founded": "November 2022",
     "focus": "Youth mental health and psychosocial well-being",
     "geographicCoverage": {
       "pilot": "Zomba District",
@@ -16,6 +17,14 @@
     },
     "vision": "To be a leading youth-focused organization shaping mentally healthy, resilient, and empowered generations while supporting vulnerable populations in Malawi and beyond.",
     "mission": "To improve the mental health and psychosocial well-being of adolescents, youth, and vulnerable communities in Malawi and beyond through accessible services, community empowerment, research, and advocacy.",
+    "approvedDescription": "Empower Mind Initiative was founded in November 2022 as a youth-focused organization dedicated to promoting mental health, psychosocial well-being, and social resilience among adolescents, young people, women, and other vulnerable populations. Through community empowerment, youth engagement, advocacy, research, and systems strengthening, the organization responds to mental-health challenges and psychosocial pressures linked to education, unemployment, climate shocks, and social inequality.",
+    "impact": {
+      "peopleReached": "More than 5,000 adolescents and young people",
+      "districts": ["Zomba", "Machinga"],
+      "chapterCount": 5,
+      "deliveryNote": "A growing network of Mental Health Ambassadors in university chapters and secondary schools",
+      "status": "supplied in stakeholder feedback on 2026-07-13"
+    },
     "contact": {
       "email": "empowermindtherapy@gmail.com",
       "phones": ["+265 990 532 201", "+265 884 218 155"],
@@ -149,7 +158,7 @@
   },
   "publicationRestrictions": {
     "doNotInvent": [
-      "Impact numbers",
+      "Additional impact numbers",
       "Testimonials",
       "Team roles",
       "Registration details",

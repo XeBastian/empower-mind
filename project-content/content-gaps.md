@@ -4,12 +4,12 @@ Nothing in this file may be invented by the coding agent.
 
 ## Organization identity
 
-- [ ] Official registered name
+- [x] Official public name — Empower Mind Initiative; legal registration details remain missing
 - [ ] Registration details
-- [ ] Founding year and history
-- [ ] Approved boilerplate description
-- [ ] Final vision
-- [ ] Final mission
+- [x] Founding date — November 2022; fuller organizational history remains missing
+- [x] Approved working boilerplate description — supplied in stakeholder feedback on 2026-07-13
+- [x] Vision — supplied in the January 2026 organizational profile
+- [x] Mission — supplied in the January 2026 organizational profile
 - [ ] Values
 - [ ] Leadership and team
 - [ ] Board or governance
@@ -57,7 +57,7 @@ The profile currently confirms three programme names, five chapter institutions,
 - [ ] Audited financial information
 - [x] Monitoring and evaluation approach — results-based monitoring and evaluation, with named data sources
 - [ ] Publications/research
-- [ ] Approved impact figures with dates and methodology
+- [x] Headline reach figure — more than 5,000 people reached since November 2022 across Zomba and Machinga; measurement period and methodology remain missing
 - [ ] Partner and funder approvals
 - [ ] Policies and downloadable documents
 - [ ] Awards/accreditation, if any
