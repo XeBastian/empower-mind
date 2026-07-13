@@ -7,10 +7,8 @@ export const site = {
   url: 'https://empower-mind.pages.dev',
   navigation: [
     { href: '/about', label: 'About' },
-    { href: '/what-we-do', label: 'What we do' },
-    { href: '/programs', label: 'Programs' },
-    { href: '/research-advocacy', label: 'Research & advocacy' },
-    { href: '/resources', label: 'Resources' },
+    { href: '/programs', label: 'Programmes' },
+    { href: '/donate', label: 'Donate' },
   ],
   contact: {
     email: 'empowermindtherapy@gmail.com',

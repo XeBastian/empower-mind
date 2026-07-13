@@ -64,7 +64,9 @@ The profile currently confirms three programme names, five chapter institutions,
 
 ## Participation
 
-- [ ] Donation capability and destination
+- [ ] Donation capability and destination — a programme-directed donation enquiry page was
+      requested on 2026-07-13; payment methods, account details, fund restrictions, receipting, and
+      response expectations remain missing and are not published
 - [ ] Volunteer pathway
 - [x] Partnership pathway — direct contact through the confirmed organization email; response expectation remains missing
 - [ ] Program application pathway
