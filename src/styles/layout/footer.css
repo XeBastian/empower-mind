@@ -137,10 +137,12 @@
 .footer-email {
   display: block;
   margin-bottom: var(--space-4);
+  overflow-wrap: normal !important;
   font-family: var(--font-display);
-  font-size: var(--step-1);
+  font-size: clamp(0.82rem, 1.15vw, 1rem);
   font-weight: 700;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .footer-phones {

@@ -46,9 +46,29 @@
 }
 
 .purpose-statement {
+  position: relative;
   min-height: clamp(17rem, 24vw, 21rem);
+  overflow: hidden;
   padding: clamp(1.35rem, 3vw, 2.5rem);
   border-radius: clamp(1.5rem, 3vw, 3rem);
+}
+
+.purpose-statement::before {
+  position: absolute;
+  width: clamp(8rem, 15vw, 13rem);
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-right-color: var(--blue-500);
+  border-radius: 50%;
+  content: '';
+  opacity: 0.22;
+  animation: purpose-orbit 16s linear infinite;
+  pointer-events: none;
+}
+
+.purpose-statement > * {
+  position: relative;
+  z-index: 1;
 }
 
 .purpose-statement--mission {
@@ -57,9 +77,20 @@
   color: var(--white);
 }
 
+.purpose-statement--mission::before {
+  right: -3rem;
+  bottom: -4rem;
+}
+
 .purpose-statement--vision {
   grid-column: 8 / -1;
   background: var(--blue-100);
+}
+
+.purpose-statement--vision::before {
+  top: -4rem;
+  right: -2rem;
+  border-right-color: var(--blue-700);
 }
 
 .purpose-statement__label {
@@ -78,6 +109,11 @@
   border-radius: 50%;
   font-size: 0.75rem;
   font-weight: 800;
+  animation: purpose-marker 5s ease-in-out infinite;
+}
+
+.purpose-statement--vision .purpose-statement__label span {
+  animation-delay: -2.5s;
 }
 
 .purpose-statement__label p {
@@ -96,6 +132,19 @@
   font-weight: 650;
   letter-spacing: -0.035em;
   line-height: 1.12;
+}
+
+@keyframes purpose-orbit {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes purpose-marker {
+  50% {
+    box-shadow: 0 0 0 0.45rem rgba(173, 195, 220, 0.18);
+    transform: translateY(-0.15rem);
+  }
 }
 
 @media (max-width: 48rem) {
