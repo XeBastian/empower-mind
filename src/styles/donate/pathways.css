@@ -1,0 +1,97 @@
+.donate-pathways {
+  padding-block: var(--space-8);
+  background: var(--blue-050);
+}
+
+.donate-pathways__intro {
+  display: grid;
+  grid-template-columns: 0.45fr 1fr 0.7fr;
+  gap: var(--space-5);
+  align-items: start;
+  margin-bottom: var(--space-7);
+}
+
+.donate-pathways__intro h2,
+.donate-pathways__intro > p:last-child {
+  margin: 0;
+}
+
+.donate-pathways__intro > p:last-child {
+  color: var(--muted-ink);
+}
+
+.donate-pathways__list {
+  width: min(100% - (2 * var(--page-gutter)), var(--container));
+  margin: 0 auto;
+  padding: 0;
+  border-top: 1px solid var(--navy-950);
+  list-style: none;
+}
+
+.donate-pathways__list li {
+  display: grid;
+  grid-template-columns: minmax(4rem, 0.25fr) minmax(0, 1.2fr) minmax(14rem, 0.55fr);
+  gap: var(--space-5);
+  align-items: center;
+  min-height: clamp(15rem, 24vw, 21rem);
+  padding-block: var(--space-5);
+  border-bottom: var(--rule);
+}
+
+.pathway-number {
+  color: var(--blue-500);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  line-height: 1;
+}
+
+.pathway-copy h3 {
+  max-width: 22ch;
+  margin-bottom: var(--space-3);
+  font-size: var(--step-3);
+}
+
+.pathway-copy p {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--muted-ink);
+}
+
+.donate-pathways__list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--navy-950);
+  background: var(--white);
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    background var(--motion-fast),
+    color var(--motion-fast),
+    transform var(--motion-fast);
+}
+
+.donate-pathways__list a:hover {
+  background: var(--navy-950);
+  color: var(--white);
+  transform: translateY(-0.25rem);
+}
+
+@media (max-width: 48rem) {
+  .donate-pathways__intro,
+  .donate-pathways__list li {
+    grid-template-columns: 1fr;
+  }
+
+  .donate-pathways__list li {
+    gap: var(--space-3);
+  }
+
+  .pathway-number {
+    font-size: var(--step-3);
+  }
+}

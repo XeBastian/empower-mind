@@ -1,0 +1,23 @@
+.contact-safety {
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--blue-200);
+  background: var(--blue-100);
+}
+
+.contact-safety__grid {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1fr);
+  gap: var(--space-5);
+}
+
+.contact-safety__grid p:last-child {
+  max-width: 50rem;
+  margin: 0;
+}
+
+@media (max-width: 40rem) {
+  .contact-safety__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

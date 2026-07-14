@@ -1,0 +1,26 @@
+.gallery-contact {
+  padding-block: var(--space-8);
+  border-top: 1px solid var(--line);
+  background: var(--blue-100);
+}
+
+.gallery-contact__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-7);
+  align-items: end;
+}
+
+.gallery-contact h2 {
+  max-width: 12ch;
+}
+
+.gallery-contact__grid > div:last-child {
+  max-width: 34rem;
+}
+
+@media (max-width: 48rem) {
+  .gallery-contact__grid {
+    grid-template-columns: 1fr;
+  }
+}

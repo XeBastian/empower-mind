@@ -1,0 +1,27 @@
+---
+import { site } from '@/data/site';
+import '@/styles/donate/trust.css';
+
+const donationEmail = `mailto:${site.contact.email}?subject=General%20donation%20enquiry`;
+---
+
+<section class="donate-trust" aria-labelledby="donate-trust-title">
+  <div class="container donate-trust__grid">
+    <div data-reveal>
+      <p class="eyebrow">Before you give</p>
+      <h2 id="donate-trust-title">Confirm the details directly.</h2>
+    </div>
+    <div class="donate-trust__copy" data-reveal>
+      <p>
+        Approved online payment, bank, and mobile-money details are not yet published on this
+        website. Empower Mind does not collect financial information here.
+      </p>
+      <p class="donate-trust__note">
+        Ask about available payment methods, fund use, and receipts before sending money.
+      </p>
+      <a class="text-link" href={donationEmail}
+        >Email Empower Mind <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </div>
+</section>

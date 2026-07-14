@@ -1,0 +1,95 @@
+.not-found {
+  position: relative;
+  display: grid;
+  min-height: 92svh;
+  overflow: hidden;
+  padding-block: clamp(8rem, 14vw, 11rem) var(--space-7);
+  background: var(--blue-100);
+  align-items: end;
+}
+
+.not-found::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 52%, var(--blue-200) 52%);
+  content: '';
+}
+
+.not-found__number {
+  position: absolute;
+  top: clamp(7rem, 11vw, 9rem);
+  left: 50%;
+  display: flex;
+  width: min(100% - (2 * var(--page-gutter)), var(--container));
+  justify-content: space-between;
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 31vw, 29rem);
+  font-weight: 850;
+  letter-spacing: -0.14em;
+  line-height: 0.65;
+  transform: translateX(-50%);
+}
+
+.not-found__number span:nth-child(2) {
+  color: transparent;
+  -webkit-text-stroke: clamp(2px, 0.35vw, 5px) var(--blue-700);
+  animation: error-pulse 4s ease-in-out infinite;
+}
+
+.not-found__content {
+  position: relative;
+  z-index: 1;
+  width: min(100% - (2 * var(--page-gutter)), 56rem);
+  margin-left: var(--page-gutter);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  background: var(--navy-950);
+  color: var(--white);
+}
+
+.not-found__content h1 {
+  max-width: 10ch;
+  margin-bottom: var(--space-4);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 0.95;
+}
+
+.not-found__content > p:not(.eyebrow) {
+  color: var(--blue-200);
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.not-found__primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  background: var(--white);
+  color: var(--navy-950);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+@keyframes error-pulse {
+  50% {
+    transform: scale(0.92) rotate(5deg);
+  }
+}
+
+@media (max-width: 48rem) {
+  .not-found {
+    min-height: 84svh;
+  }
+
+  .not-found__content {
+    width: calc(100% - (2 * var(--page-gutter)));
+    margin-inline: auto;
+  }
+}

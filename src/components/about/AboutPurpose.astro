@@ -1,0 +1,29 @@
+---
+import { site } from '@/data/site';
+import '@/styles/about/purpose.css';
+---
+
+<section class="about-purpose" aria-labelledby="about-title">
+  <div class="container about-purpose__intro" data-reveal="immediate">
+    <p class="eyebrow">About Empower Mind Initiative</p>
+    <h1 id="about-title">Our mission and vision</h1>
+  </div>
+
+  <div class="container purpose-statements">
+    <article class="purpose-statement purpose-statement--mission" data-reveal>
+      <div class="purpose-statement__label">
+        <span aria-hidden="true">01</span>
+        <p>Our mission</p>
+      </div>
+      <blockquote>{site.mission}</blockquote>
+    </article>
+
+    <article class="purpose-statement purpose-statement--vision" data-reveal>
+      <div class="purpose-statement__label">
+        <span aria-hidden="true">02</span>
+        <p>Our vision</p>
+      </div>
+      <blockquote>{site.vision}</blockquote>
+    </article>
+  </div>
+</section>

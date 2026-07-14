@@ -1,0 +1,130 @@
+.donate-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(9rem, 15vw, 13rem) var(--space-8);
+  background: var(--white);
+}
+
+.donate-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(20rem, 0.95fr);
+  align-items: center;
+  gap: var(--space-7);
+}
+
+.donate-hero__copy {
+  position: relative;
+  z-index: 2;
+}
+
+.donate-hero h1 {
+  max-width: 10ch;
+  margin-bottom: var(--space-5);
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.96;
+}
+
+.donate-hero .lede {
+  margin-bottom: var(--space-5);
+}
+
+.donate-hero__link {
+  display: inline-flex;
+  min-width: min(100%, 22rem);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-block: 1px solid var(--navy-950);
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-decoration: none;
+  transition: padding-inline var(--motion-fast);
+}
+
+.donate-hero__link:hover {
+  padding-inline: var(--space-3);
+}
+
+.donate-signal {
+  position: relative;
+  display: grid;
+  min-height: clamp(24rem, 45vw, 38rem);
+  place-items: center;
+}
+
+.donate-signal__ring {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.donate-signal__ring--outer {
+  width: min(100%, 35rem);
+  border: 1px solid var(--blue-300);
+  animation: donate-turn 26s linear infinite;
+}
+
+.donate-signal__ring--outer::after {
+  position: absolute;
+  top: 14%;
+  right: 8%;
+  width: 1rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--blue-700);
+  content: '';
+}
+
+.donate-signal__ring--middle {
+  width: min(72%, 25rem);
+  border: clamp(2.5rem, 6vw, 5rem) solid var(--blue-100);
+  border-right-color: var(--blue-700);
+  animation: donate-turn 18s linear infinite reverse;
+}
+
+.donate-signal__core {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: clamp(7rem, 14vw, 11rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy-950);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 800;
+}
+
+.donate-signal__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: var(--step--1);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@keyframes donate-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (max-width: 48rem) {
+  .donate-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donate-signal {
+    min-height: 20rem;
+  }
+
+  .donate-signal__caption {
+    right: auto;
+    bottom: -1rem;
+  }
+}

@@ -1,0 +1,29 @@
+---
+import { site } from '@/data/site';
+import '@/styles/donate/hero.css';
+
+const donationEmail = `mailto:${site.contact.email}?subject=Donation%20enquiry`;
+---
+
+<section class="donate-hero" aria-labelledby="donate-title">
+  <div class="container donate-hero__grid">
+    <div class="donate-hero__copy" data-reveal="immediate">
+      <p class="eyebrow">Donate to Empower Mind</p>
+      <h1 id="donate-title">Support begins with a clear conversation.</h1>
+      <p class="lede">
+        Ask how you can support Empower Mind’s work with young people and communities in Malawi.
+      </p>
+      <a class="donate-hero__link" href={donationEmail}>
+        <span>Start a donation enquiry</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="donate-signal" aria-hidden="true" data-reveal="immediate">
+      <span class="donate-signal__ring donate-signal__ring--outer"></span>
+      <span class="donate-signal__ring donate-signal__ring--middle"></span>
+      <span class="donate-signal__core">EM</span>
+      <span class="donate-signal__caption">Support · connection · action</span>
+    </div>
+  </div>
+</section>

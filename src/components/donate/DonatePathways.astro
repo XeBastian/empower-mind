@@ -1,0 +1,37 @@
+---
+import { site } from '@/data/site';
+import '@/styles/donate/pathways.css';
+
+const donationProgrammes = site.programs.map((programme) => ({
+  ...programme,
+  emailHref: `mailto:${site.contact.email}?subject=${encodeURIComponent(
+    `Donation enquiry — ${programme.title}`,
+  )}`,
+}));
+---
+
+<section class="donate-pathways" aria-labelledby="pathways-title">
+  <div class="container donate-pathways__intro" data-reveal>
+    <p class="eyebrow">Choose a conversation</p>
+    <h2 id="pathways-title">Connect your support to the work.</h2>
+    <p>Selecting an area opens an email enquiry. It does not make or restrict a payment.</p>
+  </div>
+
+  <ol class="donate-pathways__list">
+    {
+      donationProgrammes.map((programme, index) => (
+        <li data-reveal style={`--reveal-delay: ${index * 90}ms`}>
+          <span class="pathway-number">{programme.number}</span>
+          <div class="pathway-copy">
+            <h3>{programme.title}</h3>
+            <p>{programme.summary}</p>
+          </div>
+          <a href={programme.emailHref} aria-label={`Ask about supporting ${programme.title}`}>
+            <span>Ask about supporting this programme</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</section>

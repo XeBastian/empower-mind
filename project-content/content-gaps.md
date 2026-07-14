@@ -11,7 +11,7 @@ Nothing in this file may be invented by the coding agent.
 - [x] Vision — supplied in the January 2026 organizational profile
 - [x] Mission — supplied in the January 2026 organizational profile
 - [ ] Values
-- [ ] Leadership and team
+- [ ] Leadership and team — founder Flora Ngina Mwale confirmed by stakeholder on 2026-07-14; other names, roles, biographies, portraits, and publication consent remain missing
 - [ ] Board or governance
 - [ ] Office address
 - [x] Phone and email — supplied in `empower-mind-profile.json`
@@ -67,7 +67,7 @@ The profile currently confirms three programme names, five chapter institutions,
 - [ ] Donation capability and destination — a programme-directed donation enquiry page was
       requested on 2026-07-13; payment methods, account details, fund restrictions, receipting, and
       response expectations remain missing and are not published
-- [ ] Volunteer pathway
+- [x] Volunteer enquiry pathway — direct contact through the confirmed organization email; role availability and response expectations remain missing
 - [x] Partnership pathway — direct contact through the confirmed organization email; response expectation remains missing
 - [ ] Program application pathway
 - [ ] Newsletter

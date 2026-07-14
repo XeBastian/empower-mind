@@ -1,0 +1,25 @@
+---
+import { site } from '@/data/site';
+import '@/styles/about/volunteer.css';
+
+const volunteerEmail = `mailto:${site.contact.email}?subject=Volunteer%20enquiry`;
+---
+
+<section class="about-volunteer" aria-labelledby="volunteer-title">
+  <div class="container about-volunteer__grid" data-reveal>
+    <div>
+      <p class="eyebrow">Volunteer with us</p>
+      <h2 id="volunteer-title">Want to bring your time and perspective?</h2>
+    </div>
+    <div class="about-volunteer__action">
+      <p>
+        Start a conversation with Empower Mind. Tell us briefly how you would like to contribute,
+        and the team can respond by email.
+      </p>
+      <a class="volunteer-link" href={volunteerEmail}>
+        <span>Send a volunteer enquiry</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>

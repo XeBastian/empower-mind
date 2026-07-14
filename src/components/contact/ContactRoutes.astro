@@ -1,0 +1,38 @@
+---
+import { site } from '@/data/site';
+import '@/styles/contact/routes.css';
+---
+
+<section class="contact-routes" aria-labelledby="contact-routes-title">
+  <div class="container contact-routes__heading" data-reveal>
+    <p class="eyebrow">Direct contact</p>
+    <h2 id="contact-routes-title">Choose the route that works for you.</h2>
+  </div>
+
+  <div class="container contact-routes__list">
+    <a class="contact-route contact-route--email" href={`mailto:${site.contact.email}`} data-reveal>
+      <span class="contact-route__number">01</span>
+      <span class="contact-route__label">Email</span>
+      <strong>{site.contact.email}</strong>
+      <span class="contact-route__arrow" aria-hidden="true">↗</span>
+    </a>
+
+    {
+      site.contact.phones.map((phone, index) => (
+        <a
+          class="contact-route"
+          href={`tel:${phone.replace(/\s/g, '')}`}
+          data-reveal
+          style={`--reveal-delay: ${(index + 1) * 80}ms`}
+        >
+          <span class="contact-route__number">{String(index + 2).padStart(2, '0')}</span>
+          <span class="contact-route__label">Phone</span>
+          <strong>{phone}</strong>
+          <span class="contact-route__arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</section>

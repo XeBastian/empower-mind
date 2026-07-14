@@ -1,0 +1,113 @@
+.about-purpose {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(7.5rem, 10vw, 9rem) var(--space-7);
+  background: var(--white);
+}
+
+.about-purpose::before {
+  position: absolute;
+  top: clamp(6rem, 12vw, 9rem);
+  right: max(-14rem, -16vw);
+  width: clamp(18rem, 38vw, 34rem);
+  aspect-ratio: 1;
+  border: 1px solid var(--blue-200);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 clamp(2rem, 5vw, 5rem) var(--blue-050),
+    0 0 0 clamp(2.1rem, 5.1vw, 5.1rem) var(--blue-200);
+  content: '';
+  pointer-events: none;
+}
+
+.about-purpose__intro {
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--space-3);
+}
+
+.about-purpose__intro h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.purpose-statements {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--space-4);
+}
+
+.purpose-statement {
+  min-height: clamp(17rem, 24vw, 21rem);
+  padding: clamp(1.35rem, 3vw, 2.5rem);
+  border-radius: clamp(1.5rem, 3vw, 3rem);
+}
+
+.purpose-statement--mission {
+  grid-column: 1 / span 7;
+  background: var(--navy-950);
+  color: var(--white);
+}
+
+.purpose-statement--vision {
+  grid-column: 8 / -1;
+  background: var(--blue-100);
+}
+
+.purpose-statement__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.purpose-statement__label span {
+  display: grid;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.purpose-statement__label p {
+  margin: 0;
+  font-size: var(--step--1);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.purpose-statement blockquote {
+  max-width: 25ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.25vw, 2.2rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+@media (max-width: 48rem) {
+  .purpose-statements {
+    display: block;
+  }
+
+  .purpose-statement {
+    min-height: 19rem;
+  }
+
+  .purpose-statement--vision {
+    margin-top: var(--space-4);
+  }
+}

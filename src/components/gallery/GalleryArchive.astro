@@ -1,0 +1,56 @@
+---
+import { galleryThemes } from '@/data/gallery';
+import '@/styles/gallery/archive.css';
+---
+
+<section class="gallery-archive" aria-labelledby="gallery-title">
+  <div class="container gallery-archive__lead" data-reveal="immediate">
+    <p class="eyebrow">Gallery</p>
+    <h1 id="gallery-title">The work, documented with care.</h1>
+    <p class="lede">
+      A growing visual record of participation, learning, connection, and systems work.
+    </p>
+  </div>
+
+  <div class="container gallery-grid">
+    {
+      galleryThemes.map((theme, index) => (
+        <figure
+          class={`gallery-item gallery-item--${theme.layout}`}
+          data-reveal
+          style={`--reveal-delay: ${index * 70}ms`}
+        >
+          <div class="gallery-frame" data-media-state={theme.media ? 'approved' : 'awaiting'}>
+            {theme.media ? (
+              <img
+                src={theme.media.src}
+                srcset={theme.media.srcset}
+                sizes={theme.media.sizes}
+                width={theme.media.width}
+                height={theme.media.height}
+                alt={theme.media.alt}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchpriority={index === 0 ? 'high' : 'auto'}
+                decoding="async"
+              />
+            ) : (
+              <div class="gallery-placeholder" aria-hidden="true">
+                <span>{theme.number}</span>
+                <i />
+              </div>
+            )}
+          </div>
+          <figcaption>
+            <p class="gallery-item__number">Theme {theme.number}</p>
+            <div>
+              <h2>{theme.title}</h2>
+              <p>{theme.media?.caption ?? theme.note}</p>
+              {theme.media?.credit && <small>{theme.media.credit}</small>}
+            </div>
+            {!theme.media && <span class="gallery-item__state">Awaiting approved media</span>}
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</section>

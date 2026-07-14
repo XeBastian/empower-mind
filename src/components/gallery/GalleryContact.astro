@@ -1,0 +1,19 @@
+---
+import { site } from '@/data/site';
+import '@/styles/gallery/contact.css';
+---
+
+<section class="gallery-contact">
+  <div class="container gallery-contact__grid" data-reveal>
+    <div>
+      <p class="eyebrow">Contribute responsibly</p>
+      <h2>Have approved Empower Mind media?</h2>
+    </div>
+    <div>
+      <p>Share ownership, consent, caption, credit, location, and approved-use details first.</p>
+      <a class="button-link" href={`mailto:${site.contact.email}?subject=Gallery media enquiry`}
+        >Discuss gallery media</a
+      >
+    </div>
+  </div>
+</section>

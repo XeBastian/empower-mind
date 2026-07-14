@@ -1,0 +1,54 @@
+---
+import { teamMembers } from '@/data/team';
+import '@/styles/about/team.css';
+---
+
+<section class="about-team" aria-labelledby="team-title">
+  <div class="container about-team__intro" data-reveal>
+    <p class="eyebrow">Our team</p>
+    <h2 id="team-title">The people behind Empower Mind.</h2>
+  </div>
+
+  <div class="container team-constellation">
+    <ul class="team-list" aria-label="Empower Mind team">
+      {
+        teamMembers.map((member, index) => (
+          <li
+            class:list={{
+              'team-profile': true,
+              'team-profile--founder': member.status === 'confirmed',
+              'team-profile--pending': member.status === 'pending',
+            }}
+            data-reveal
+            style={`--reveal-delay: ${index * 100}ms`}
+          >
+            {member.status === 'confirmed' ? (
+              <>
+                <span class="team-profile__portrait" aria-hidden="true">
+                  {member.initials}
+                </span>
+                <div>
+                  <p class="team-profile__role">{member.role}</p>
+                  <h3>{member.name}</h3>
+                </div>
+              </>
+            ) : (
+              <>
+                <span class="team-profile__portrait" aria-hidden="true">
+                  <span />
+                </span>
+                <div>
+                  <p class="team-profile__role">Team profile</p>
+                  <p class="team-profile__pending-copy">To be confirmed</p>
+                </div>
+              </>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="team-note" data-reveal>
+      Additional names and roles will be added after publication details are confirmed.
+    </p>
+  </div>
+</section>
