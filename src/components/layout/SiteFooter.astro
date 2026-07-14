@@ -1,105 +1,64 @@
 ---
 import { site } from '@/data/site';
+import '@/styles/layout/footer.css';
+
 const year = new Date().getFullYear();
+const footerNavigation = [
+  { href: '/', label: 'Home' },
+  { href: '/programs', label: 'Programmes' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/donate', label: 'Donate' },
+] as const;
 ---
 
 <footer class="site-footer">
-  <div class="footer-orbit" aria-hidden="true"></div>
+  <div class="container footer-brand-row">
+    <a class="footer-brand" href="/" aria-label="Empower Mind Initiative home">
+      <img src="/brand/logos/logo.png" alt="" width="775" height="775" />
+      <span>Empower Mind<br />Initiative</span>
+    </a>
+    <a class="footer-donate" href="/donate">
+      <span>Support the work</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+
   <div class="container footer-grid">
-    <div class="footer-lead">
-      <p class="eyebrow">Zomba District · Southern Region, Malawi</p><p class="footer-name">
-        A stronger response starts with connection.
-      </p><p>
-        Empower Mind Initiative promotes youth mental health, psychosocial well-being, and community
-        resilience across Malawi.
-      </p>
+    <div class="footer-introduction">
+      <p class="footer-statement">Young minds.<br />Stronger circles.</p>
+      <p>{site.shortDescription}</p>
     </div>
-    <div>
-      <p class="footer-label">Explore</p><a href="/programs">Programmes</a><a href="/gallery"
-        >Gallery</a
-      ><a href="/donate">Donate</a>
-    </div>
-    <div>
-      <p class="footer-label">Contact</p><a href={`mailto:${site.contact.email}`}
-        >{site.contact.email}</a
-      >{site.contact.phones.map((phone) => <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a>)}
+
+    <nav class="footer-sitemap" aria-label="Footer navigation">
+      <p class="footer-label">Sitemap</p>
+      <ol>
+        {
+          footerNavigation.map((item, index) => (
+            <li>
+              <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    <div class="footer-contacts">
+      <p class="footer-label">Contacts</p>
+      <a class="footer-email" href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+      <div class="footer-phones">
+        {
+          site.contact.phones.map((phone) => (
+            <a href={`tel:${phone.replace(/\s/g, '')}`}>{phone}</a>
+          ))
+        }
+      </div>
+      <p class="footer-location">Zomba District<br />Southern Region, Malawi</p>
     </div>
   </div>
+
   <div class="container footer-base">
-    <span>© {year} Empower Mind Initiative. All rights reserved.</span><span
-      >This website is informational and is not an emergency service.</span
-    >
+    <span>© {year} Empower Mind Initiative</span>
+    <span>This website is informational and is not an emergency service.</span>
   </div>
 </footer>
-
-<style>
-  .site-footer {
-    position: relative;
-    overflow: hidden;
-    padding: var(--space-8) 0 var(--space-4);
-    background: var(--navy-950);
-    color: var(--cream);
-  }
-  .footer-orbit {
-    position: absolute;
-    top: -8rem;
-    right: -6rem;
-    width: 24rem;
-    aspect-ratio: 1;
-    border: 5rem solid var(--blue-700);
-    border-radius: 50%;
-    opacity: 0.9;
-  }
-  .footer-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 2fr 0.8fr 1fr;
-    gap: var(--space-6);
-    padding-bottom: var(--space-7);
-  }
-  .footer-lead {
-    max-width: 45rem;
-  }
-  .footer-name {
-    max-width: 15ch;
-    margin-bottom: var(--space-4);
-    font-family: var(--font-display);
-    font-size: var(--step-3);
-    font-weight: 800;
-    letter-spacing: -0.05em;
-    line-height: 0.96;
-  }
-  .footer-label {
-    color: var(--blue-500);
-    font-size: var(--step--1);
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .footer-grid a {
-    display: block;
-    width: fit-content;
-    margin-bottom: 0.75rem;
-    overflow-wrap: anywhere;
-  }
-  .footer-base {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding-top: var(--space-4);
-    border-top: 1px solid rgba(255, 248, 233, 0.28);
-    color: rgba(255, 248, 233, 0.72);
-    font-size: var(--step--1);
-  }
-  @media (max-width: 48rem) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-    }
-    .footer-base {
-      flex-direction: column;
-    }
-    .footer-orbit {
-      width: 15rem;
-    }
-  }
-</style>
