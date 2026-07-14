@@ -1,0 +1,219 @@
+.chapter-network {
+  background: var(--blue-100);
+  color: var(--blue-950);
+}
+
+.chapter-network__grid {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.chapter-stage {
+  position: sticky;
+  top: calc(4.75rem + var(--space-3));
+  align-self: start;
+  min-height: 32rem;
+}
+
+.chapter-seed-line {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--blue-500);
+  transform-origin: left;
+  transition:
+    opacity var(--motion-medium),
+    transform var(--motion-medium);
+}
+
+.chapter-panel {
+  position: relative;
+  min-height: 31rem;
+  overflow: hidden;
+  padding: var(--space-6);
+  border: 1px solid var(--blue-300);
+  background: var(--white);
+  color: var(--blue-950);
+}
+
+[data-chapter-story][data-enhanced] .chapter-panel {
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+  transform: translateX(2rem);
+  transition:
+    clip-path var(--motion-slow),
+    opacity var(--motion-medium),
+    transform var(--motion-slow);
+}
+
+[data-chapter-story][data-enhanced].is-active .chapter-panel {
+  clip-path: inset(0);
+  opacity: 1;
+  transform: none;
+}
+
+[data-chapter-story][data-enhanced].is-active .chapter-seed-line {
+  opacity: 0;
+  transform: scaleX(0.12);
+}
+
+.chapter-panel > *:not(.chapter-ghost) {
+  position: relative;
+  z-index: 1;
+}
+
+.chapter-panel h2 {
+  max-width: 12ch;
+  font-size: var(--step-4);
+}
+
+.chapter-panel .lede {
+  max-width: 30rem;
+  font-size: 1.08rem;
+}
+
+.chapter-ghost {
+  position: absolute;
+  right: -0.08em;
+  bottom: -0.18em;
+  color: rgba(23, 33, 59, 0.07);
+  font-family: var(--font-display);
+  font-size: clamp(11rem, 22vw, 20rem);
+  letter-spacing: -0.12em;
+  line-height: 0.75;
+}
+
+.chapter-progress {
+  margin: var(--space-5) 0 var(--space-3);
+  font-size: var(--step--1);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.chapter-progress strong {
+  display: inline-block;
+  min-width: 1.6rem;
+  color: var(--blue-700);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+}
+
+.institution-list {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(23, 33, 59, 0.25);
+  list-style: none;
+}
+
+.institution-list li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--space-3);
+  min-height: clamp(9rem, 20vh, 11rem);
+  padding: clamp(2rem, 5vh, 3.25rem) var(--space-4);
+  border-bottom: 1px solid rgba(23, 33, 59, 0.25);
+  border-left: 3px solid transparent;
+  align-content: center;
+  transition:
+    background var(--motion-medium),
+    border-color var(--motion-medium),
+    opacity var(--motion-medium),
+    padding var(--motion-medium);
+}
+
+[data-chapter-story] .institution-list li:not([data-current]) {
+  opacity: 0.58;
+}
+
+[data-chapter-story] .institution-list li[data-current] {
+  border-left-color: var(--blue-950);
+  background: var(--blue-700);
+  color: var(--white);
+  opacity: 1;
+  padding-left: var(--space-5);
+}
+
+.institution-list li:not(.chapter-more) > span {
+  display: grid;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  box-shadow: 0.25rem 0.25rem 0 var(--blue-300);
+  font-family: var(--font-display);
+  font-size: var(--step--1);
+  font-weight: 800;
+}
+
+.institution-list strong {
+  max-width: 30rem;
+  font-size: var(--step-1);
+  line-height: 1.3;
+}
+
+[data-chapter-story] .institution-list li.chapter-more:not([data-current]) {
+  grid-template-columns: 3.5rem 1fr;
+  border-left-color: var(--blue-950);
+  background: var(--blue-950);
+  color: var(--white);
+  opacity: 1;
+}
+
+.chapter-more > span {
+  display: grid;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--blue-300);
+  border-radius: 50%;
+  color: var(--blue-300);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1;
+}
+
+@media (max-width: 48rem) {
+  .chapter-network__grid {
+    grid-template-columns: 1fr;
+  }
+  .chapter-stage {
+    position: relative;
+    top: auto;
+    min-height: auto;
+    margin-bottom: var(--space-6);
+  }
+  .chapter-seed-line {
+    display: none;
+  }
+  [data-chapter-story][data-enhanced] .chapter-panel,
+  [data-chapter-story][data-enhanced].is-active .chapter-panel {
+    clip-path: none;
+    opacity: 1;
+    transform: none;
+  }
+  .chapter-panel {
+    min-height: 26rem;
+    padding: var(--space-4);
+  }
+  .institution-list li {
+    min-height: auto;
+    padding-block: var(--space-5);
+    border-left-color: transparent;
+    background: transparent;
+    opacity: 1 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-chapter-story][data-enhanced] .chapter-panel {
+    clip-path: none;
+    opacity: 1;
+    transform: none;
+  }
+}

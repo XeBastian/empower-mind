@@ -72,7 +72,7 @@ a:hover {
   outline-offset: 4px;
 }
 ::selection {
-  background: var(--amber);
+  background: var(--blue-500);
   color: var(--navy-950);
 }
 .container {
@@ -119,6 +119,10 @@ a:hover {
   text-decoration: underline;
   text-underline-offset: 0.3em;
 }
+.text-link {
+  font-weight: 800;
+  text-underline-offset: 0.35em;
+}
 .skip-link {
   position: fixed;
   z-index: 100;
@@ -132,7 +136,7 @@ a:hover {
 .skip-link:focus {
   transform: translateY(0);
 }
-[data-reveal] {
+[data-reveal].is-pending {
   opacity: 0;
   transform: translateY(2.5rem) rotate(0.4deg);
   filter: blur(8px);
@@ -142,7 +146,7 @@ a:hover {
     filter var(--motion-medium);
   transition-delay: var(--reveal-delay, 0ms);
 }
-[data-reveal].is-visible {
+[data-reveal].is-pending.is-visible {
   opacity: 1;
   transform: none;
   filter: none;
@@ -152,14 +156,14 @@ a:hover {
   transform: none;
   filter: none;
 }
-[data-reveal='wipe'] {
+[data-reveal='wipe'].is-pending {
   clip-path: inset(0 100% 0 0);
   opacity: 1;
   transform: none;
   filter: none;
   transition: clip-path var(--motion-slow);
 }
-[data-reveal='wipe'].is-visible {
+[data-reveal='wipe'].is-pending.is-visible {
   clip-path: inset(0);
 }
 [data-parallax] {
@@ -173,7 +177,7 @@ a:hover {
   position: absolute;
   inset: 0;
   border: var(--orbit-stroke, 2rem) solid var(--orbit-color, var(--navy-950));
-  border-right-color: var(--orbit-accent, var(--coral));
+  border-right-color: var(--orbit-accent, var(--blue-700));
   border-radius: 50%;
   content: '';
   animation: orbit-turn var(--orbit-duration, 24s) linear infinite;

@@ -1,0 +1,25 @@
+---
+import { site } from '@/data/site';
+import '@/styles/programmes/prevention.css';
+---
+
+<section id="prevention" class="programme-section prevention-programme">
+  <span class="prevention-programme__ghost" aria-hidden="true" data-reveal="wipe">01</span>
+  <div class="container prevention-programme__grid">
+    <div data-reveal>
+      <h2>Suicide Prevention Among University Students</h2>
+      <p class="lede">Delivered through the existing Empower Mind chapter network.</p>
+      <div class="programme-methods" aria-label="Programme methods">
+        <span>Prevention</span><span>Early identification</span><span>Referral</span><span
+          >Peer support</span
+        >
+      </div>
+      <p class="programme-status">Dates and participation criteria are not yet published.</p>
+      <a
+        class="button-link"
+        href={`mailto:${site.contact.email}?subject=University suicide prevention programme enquiry`}
+        >Ask about university work</a
+      >
+    </div>
+  </div>
+</section>

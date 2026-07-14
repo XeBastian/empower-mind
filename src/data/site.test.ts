@@ -17,8 +17,9 @@ describe('site foundation', () => {
     expect(site.responseModel.every((item) => item.status === 'confirmed')).toBe(true);
   });
 
-  it('publishes only the three sourced programme areas', () => {
-    expect(site.programs).toHaveLength(3);
+  it('keeps the chapter network separate from the two programme areas', () => {
+    expect(site.programs).toHaveLength(2);
+    expect(site.programs.map((program) => program.number)).toEqual(['01', '02']);
     expect(site.chapters).toHaveLength(5);
   });
 

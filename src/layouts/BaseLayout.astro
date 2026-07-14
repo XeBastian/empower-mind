@@ -101,7 +101,10 @@ const organizationSchema = JSON.stringify({
           },
           { threshold: 0.12 },
         );
-        reveals.forEach((element) => observer.observe(element));
+        reveals.forEach((element) => {
+          if (element.dataset.reveal !== 'immediate') element.classList.add('is-pending');
+          observer.observe(element);
+        });
       }
 
       const saveData =

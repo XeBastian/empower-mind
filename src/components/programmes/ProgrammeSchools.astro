@@ -1,0 +1,23 @@
+---
+import { site } from '@/data/site';
+import '@/styles/programmes/schools.css';
+---
+
+<section id="schools" class="programme-section schools-programme">
+  <span class="schools-programme__ghost" aria-hidden="true" data-reveal="wipe">02</span>
+  <div class="container schools-programme__grid">
+    <header data-reveal>
+      <h2>Mental Health Awareness and Career Guidance</h2>
+    </header>
+    <div data-reveal>
+      <p class="lede">Designed for primary- and secondary-school settings.</p>
+      <div class="programme-methods" aria-label="Programme settings">
+        <span>Primary schools</span><span>Secondary schools</span>
+      </div>
+      <p class="programme-status">Locations and schedules are not yet published.</p>
+      <a class="button-link" href={`mailto:${site.contact.email}?subject=School programme enquiry`}
+        >Ask about school work</a
+      >
+    </div>
+  </div>
+</section>

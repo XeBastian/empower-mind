@@ -1,0 +1,35 @@
+---
+import { site } from '@/data/site';
+import '@/styles/home/programmes.css';
+---
+
+<section class="home-programmes" aria-labelledby="home-programmes-title">
+  <div class="container home-programmes__heading" data-reveal>
+    <div>
+      <p class="eyebrow">Programmes</p>
+      <h2 id="home-programmes-title">Two focused programmes.</h2>
+    </div>
+    <p>Work in the settings where young people learn, connect, and shape one another’s lives.</p>
+  </div>
+  <div class="container home-programmes__list">
+    {
+      site.programs.map((program, index) => (
+        <a
+          href={program.href}
+          class={`home-programme home-programme-${index + 1}`}
+          data-reveal
+          style={`--reveal-delay: ${index * 85}ms`}
+        >
+          <span class="home-programme__number">{program.number}</span>
+          <h3>{program.title}</h3>
+          <span class="home-programme__arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+      ))
+    }
+  </div>
+  <div class="container home-programmes__action" data-reveal>
+    <a class="button-link" href="/programs">See programme details</a>
+  </div>
+</section>

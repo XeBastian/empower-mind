@@ -1,0 +1,86 @@
+.programmes-index {
+  position: sticky;
+  z-index: 15;
+  top: 4.75rem;
+  border-block: 1px solid var(--line);
+  background: rgba(244, 247, 251, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.programmes-index .container {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  padding-block: 0.8rem;
+}
+
+.programmes-index a {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 0.35rem 0 0.45rem 1rem;
+  color: var(--muted-ink);
+  font-size: var(--step--1);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    color var(--motion-fast),
+    transform var(--motion-fast);
+}
+
+.programmes-index a::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.42rem;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: '';
+  transform: translateY(-65%) scale(0.65);
+  transition:
+    background var(--motion-fast),
+    transform var(--motion-fast);
+}
+
+.programmes-index a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 1rem;
+  height: 2px;
+  background: var(--blue-700);
+  content: '';
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--motion-medium);
+}
+
+.programmes-index a[data-current] {
+  color: var(--blue-950);
+  transform: translateY(-1px);
+}
+
+.programmes-index a[data-current]::before {
+  border-color: var(--blue-700);
+  background: var(--blue-700);
+  transform: translateY(-65%) scale(1);
+}
+
+.programmes-index a[data-current]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (max-width: 48rem) {
+  .programmes-index {
+    top: 4.25rem;
+  }
+}
+
+@supports not (backdrop-filter: blur(1rem)) {
+  .programmes-index {
+    background: var(--blue-050);
+  }
+}

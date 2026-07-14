@@ -1,0 +1,111 @@
+.home-hero {
+  min-height: 100svh;
+  padding: clamp(8rem, 15vh, 11rem) 0 var(--space-5);
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.home-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(25rem, 0.88fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: center;
+  min-height: min(65rem, calc(100svh - 14rem));
+}
+
+.home-hero__copy {
+  position: relative;
+  z-index: 2;
+}
+
+.home-hero h1 {
+  max-width: 12ch;
+  margin-bottom: var(--space-5);
+  font-size: clamp(3.2rem, 6.8vw, 7.2rem);
+  line-height: 0.91;
+  letter-spacing: -0.065em;
+}
+
+.home-hero h1 span {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--blue-300);
+  text-decoration-thickness: 0.11em;
+  text-underline-offset: 0.08em;
+}
+
+.home-hero .lede {
+  max-width: 40rem;
+  margin-bottom: var(--space-5);
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.home-proof {
+  display: grid;
+  grid-template-columns: 1.1fr 0.65fr 1fr;
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.home-proof p {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  align-items: center;
+  margin: 0;
+  padding: var(--space-4) var(--space-4) 0 0;
+}
+
+.home-proof p + p {
+  padding-left: var(--space-4);
+  border-left: 1px solid var(--line);
+}
+
+.home-proof strong {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1;
+}
+
+.home-proof span {
+  max-width: 17rem;
+  color: var(--muted-ink);
+  font-size: var(--step--1);
+  line-height: 1.35;
+}
+
+@media (max-width: 62rem) {
+  .home-hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(21rem, 0.75fr);
+  }
+}
+
+@media (max-width: 48rem) {
+  .home-hero {
+    min-height: auto;
+    padding-top: 7.5rem;
+  }
+  .home-hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  .home-hero h1 {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+  .home-proof {
+    grid-template-columns: 1fr;
+    margin-top: var(--space-5);
+  }
+  .home-proof p,
+  .home-proof p + p {
+    padding: var(--space-3) 0;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}

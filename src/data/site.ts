@@ -36,19 +36,12 @@ export const site = {
   programs: [
     {
       number: '01',
-      title: 'Empower Mind Chapters',
-      summary:
-        'An institutionalized chapter model across five named higher-education institutions.',
-      href: '/programs',
-    },
-    {
-      number: '02',
       title: 'Suicide Prevention Among University Students',
       summary: 'A prevention project delivered through the existing Empower Mind chapter network.',
       href: '/programs',
     },
     {
-      number: '03',
+      number: '02',
       title: 'Mental Health Awareness Campaigns and Career Guidance in Schools',
       summary: 'Work designed for primary- and secondary-school settings.',
       href: '/programs',

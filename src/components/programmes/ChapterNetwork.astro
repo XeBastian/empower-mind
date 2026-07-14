@@ -1,0 +1,98 @@
+---
+import { site } from '@/data/site';
+import '@/styles/programmes/chapters.css';
+---
+
+<section id="chapters" class="programme-section chapter-network" data-chapter-story>
+  <div class="container chapter-network__grid">
+    <div class="chapter-stage">
+      <div class="chapter-seed-line" aria-hidden="true"></div>
+      <div class="chapter-panel">
+        <span class="chapter-ghost" data-chapter-ghost aria-hidden="true">01</span>
+        <p class="programme-number">Chapter network · Five institutions</p>
+        <h2>Empower Mind Chapters</h2>
+        <p class="lede">
+          Built inside campus life, connecting five higher-education institutions through peer
+          support, referral, training, and mentorship.
+        </p>
+        <p class="chapter-progress" aria-hidden="true">
+          <strong data-chapter-counter>01</strong>
+        </p>
+        <a
+          class="button-link"
+          href={`mailto:${site.contact.email}?subject=Empower Mind Chapters enquiry`}
+          >Ask about chapters</a
+        >
+      </div>
+    </div>
+    <ol class="institution-list" aria-label="Chapter institutions">
+      {
+        site.chapters.map((chapter, index) => (
+          <li data-reveal data-chapter-index={index + 1} style={`--reveal-delay: ${index * 60}ms`}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{chapter}</strong>
+          </li>
+        ))
+      }
+      <li class="chapter-more" data-reveal>
+        <span aria-hidden="true">+</span>
+        <strong>And more chapters to come.</strong>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<script>
+  const story = document.querySelector<HTMLElement>('[data-chapter-story]');
+  const rows = story?.querySelectorAll<HTMLElement>('[data-chapter-index]');
+  const counter = story?.querySelector<HTMLElement>('[data-chapter-counter]');
+  const ghost = story?.querySelector<HTMLElement>('[data-chapter-ghost]');
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (story && rows?.length && counter && ghost && 'IntersectionObserver' in window) {
+    story.setAttribute('data-enhanced', '');
+    new IntersectionObserver(
+      ([entry]) => story.classList.toggle('is-active', entry?.isIntersecting ?? false),
+      { rootMargin: '-12% 0px -12%', threshold: 0.08 },
+    ).observe(story);
+
+    let current = 1;
+    const renderNumber = (value: number) => {
+      const text = String(value).padStart(2, '0');
+      counter.textContent = text;
+      ghost.textContent = text;
+    };
+    const animateNumber = (next: number) => {
+      if (reducedMotion || next === current) {
+        current = next;
+        renderNumber(next);
+        return;
+      }
+      const start = current;
+      const startedAt = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - startedAt) / 320);
+        renderNumber(Math.round(start + (next - start) * progress));
+        if (progress < 1) requestAnimationFrame(tick);
+        else current = next;
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const rowObserver = new IntersectionObserver(
+      (entries) => {
+        const active = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top),
+          )[0];
+        if (!active) return;
+        const next = Number((active.target as HTMLElement).dataset.chapterIndex);
+        rows.forEach((row) => row.toggleAttribute('data-current', row === active.target));
+        animateNumber(next);
+      },
+      { rootMargin: '-34% 0px -52%', threshold: 0.05 },
+    );
+    rows.forEach((row) => rowObserver.observe(row));
+  }
+</script>

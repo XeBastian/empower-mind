@@ -1,0 +1,32 @@
+---
+import { site } from '@/data/site';
+import '@/styles/home/idea.css';
+---
+
+<section class="home-idea" aria-labelledby="home-idea-title">
+  <div class="container home-idea__grid">
+    <p class="eyebrow" data-reveal>The idea</p>
+    <div>
+      <h2 id="home-idea-title" data-reveal="wipe">
+        Meet young people where life is already happening.
+      </h2>
+      <p class="home-idea__copy" data-reveal>
+        Empower Mind works across everyday settings—from schools and campuses to communities and
+        institutions—linking youth engagement with advocacy, research, and stronger systems.
+      </p>
+      <a class="text-link" href="/about" data-reveal
+        >Why the initiative exists <span aria-hidden="true">↗</span></a
+      >
+    </div>
+  </div>
+  <div class="home-approach" aria-label="Empower Mind's connected approach">
+    {
+      site.responseModel.slice(1).map((item, index) => (
+        <span data-reveal style={`--reveal-delay: ${index * 70}ms`}>
+          <i>{String(index + 1).padStart(2, '0')}</i>
+          {item.title}
+        </span>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,101 @@
+.home-idea {
+  padding-top: var(--space-8);
+  background: var(--blue-050);
+}
+
+.home-idea__grid {
+  display: grid;
+  grid-template-columns: 0.35fr 1.65fr;
+  gap: var(--space-7);
+  padding-bottom: var(--space-8);
+}
+
+.home-idea h2 {
+  max-width: 17ch;
+  margin-bottom: var(--space-5);
+  font-size: clamp(2.7rem, 5.3vw, 6rem);
+  line-height: 0.98;
+}
+
+.home-idea__copy {
+  max-width: 43rem;
+  margin-left: clamp(0rem, 12vw, 13rem);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.home-idea .text-link {
+  display: block;
+  width: fit-content;
+  margin: var(--space-4) 0 0 clamp(0rem, 12vw, 13rem);
+}
+
+.home-approach {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-block: 1px solid var(--line);
+  background: var(--white);
+}
+
+.home-approach > span {
+  display: flex;
+  min-height: 10rem;
+  align-items: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 750;
+}
+
+.home-approach > span + span {
+  border-left: 1px solid var(--line);
+}
+
+.home-approach i {
+  align-self: flex-start;
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-style: normal;
+  font-weight: 800;
+}
+
+@media (max-width: 48rem) {
+  .home-idea__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .home-idea__copy,
+  .home-idea .text-link {
+    margin-left: 0;
+  }
+  .home-approach {
+    grid-template-columns: 1fr 1fr;
+  }
+  .home-approach > span {
+    min-height: 8rem;
+  }
+  .home-approach > span:nth-child(3) {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+  .home-approach > span:nth-child(4) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 30rem) {
+  .home-approach {
+    grid-template-columns: 1fr;
+  }
+  .home-approach > span,
+  .home-approach > span:nth-child(3),
+  .home-approach > span:nth-child(4) {
+    min-height: 6rem;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+  .home-approach > span:first-child {
+    border-top: 0;
+  }
+}

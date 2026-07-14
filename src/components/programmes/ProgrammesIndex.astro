@@ -1,0 +1,40 @@
+---
+import '@/styles/programmes/index.css';
+---
+
+<nav class="programmes-index" aria-label="Programme index">
+  <div class="container">
+    <a href="#prevention" data-programme-link="prevention">Suicide Prevention</a>
+    <a href="#schools" data-programme-link="schools">Mental Health Awareness</a>
+  </div>
+</nav>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('[data-programme-link]');
+  const sections = document.querySelectorAll<HTMLElement>('#prevention, #schools');
+
+  const setCurrent = (id: string) => {
+    links.forEach((link) => {
+      const current = link.dataset.programmeLink === id;
+      link.toggleAttribute('data-current', current);
+      if (current) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  if (links.length && sections.length && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const active = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top),
+          )[0];
+        if (active?.target.id) setCurrent(active.target.id);
+      },
+      { rootMargin: '-18% 0px -62%', threshold: 0.01 },
+    );
+    sections.forEach((section) => observer.observe(section));
+  }
+  setCurrent(location.hash.slice(1) || 'prevention');
+</script>

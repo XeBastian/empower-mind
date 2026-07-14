@@ -3,17 +3,22 @@
   --font-display: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'Source Sans 3 Variable', ui-sans-serif, system-ui, sans-serif;
 
-  --navy-950: #17213b;
-  --navy-800: #27334f;
-  --cream: #f8f4ec;
-  --paper: #fffdf9;
-  --amber: #d9a229;
-  --amber-soft: #f2e3b8;
-  --coral: #d87967;
-  --pink: #e8c6cf;
-  --lilac: #d8d0e6;
-  --sky: #c7dce2;
-  --green: #287a5b;
+  /* Core brand system: one blue family, white, and cool near-whites. */
+  --blue-950: #17213b;
+  --blue-800: #273b5b;
+  --blue-700: #36567f;
+  --blue-500: #6989ad;
+  --blue-300: #adc3dc;
+  --blue-200: #ceddeb;
+  --blue-100: #e6eef6;
+  --blue-050: #f4f7fb;
+  --white: #ffffff;
+
+  /* Semantic colour roles. */
+  --navy-950: var(--blue-950);
+  --navy-800: var(--blue-800);
+  --cream: var(--blue-050);
+  --paper: var(--white);
   --ink: var(--navy-950);
   --muted-ink: #4e5671;
   --canvas: var(--cream);

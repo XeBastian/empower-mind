@@ -1,0 +1,113 @@
+.home-programmes {
+  padding-block: var(--space-8);
+  background: var(--paper);
+}
+
+.home-programmes__heading {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: var(--space-7);
+  align-items: end;
+  margin-bottom: var(--space-7);
+}
+
+.home-programmes__heading h2 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 5vw, 5.5rem);
+  line-height: 0.96;
+}
+
+.home-programmes__heading > p {
+  max-width: 30rem;
+  margin: 0;
+}
+
+.home-programmes__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.home-programme {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  min-height: 25rem;
+  padding: var(--space-5);
+  overflow: hidden;
+  border: 1px solid var(--blue-950);
+  color: var(--blue-950);
+  text-decoration: none;
+  transition:
+    transform var(--motion-fast),
+    box-shadow var(--motion-fast);
+}
+
+.home-programme:hover {
+  box-shadow: 0.7rem 0.7rem 0 var(--blue-950);
+  transform: translate(-0.35rem, -0.35rem);
+}
+
+.home-programme::after {
+  position: absolute;
+  width: 12rem;
+  aspect-ratio: 1;
+  right: -6rem;
+  bottom: -6rem;
+  border: 2.5rem solid rgba(23, 33, 59, 0.12);
+  border-radius: 50%;
+  content: '';
+  transition: transform var(--motion-medium);
+}
+
+.home-programme:hover::after {
+  transform: rotate(100deg) scale(1.08);
+}
+
+.home-programme-1 {
+  background: var(--blue-950);
+  color: var(--white);
+}
+
+.home-programme-1::after {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.home-programme-2 {
+  background: var(--blue-200);
+}
+
+.home-programme__number {
+  font-size: var(--step--1);
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.home-programme h3 {
+  grid-column: 1 / -1;
+  align-self: end;
+  max-width: 18ch;
+  margin: 0;
+  font-size: var(--step-2);
+}
+
+.home-programme__arrow {
+  font-size: var(--step-1);
+}
+
+.home-programmes__action {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 48rem) {
+  .home-programmes__heading,
+  .home-programmes__list {
+    grid-template-columns: 1fr;
+  }
+  .home-programme {
+    min-height: 18rem;
+  }
+}

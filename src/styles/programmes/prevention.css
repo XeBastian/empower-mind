@@ -1,0 +1,48 @@
+.prevention-programme {
+  overflow: hidden;
+  background: var(--blue-050);
+}
+
+.prevention-programme__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.prevention-programme__grid > div {
+  grid-column: 2;
+}
+
+.prevention-programme h2 {
+  max-width: 13ch;
+  font-size: clamp(2.6rem, 5vw, 5.25rem);
+  line-height: 0.98;
+}
+
+.prevention-programme__ghost {
+  position: absolute;
+  top: -0.22em;
+  left: -0.05em;
+  color: rgba(23, 33, 59, 0.07);
+  font-family: var(--font-display);
+  font-size: clamp(16rem, 38vw, 38rem);
+  font-weight: 800;
+  letter-spacing: -0.12em;
+  line-height: 1;
+}
+
+@media (max-width: 48rem) {
+  .prevention-programme__grid {
+    grid-template-columns: 1fr;
+  }
+  .prevention-programme__grid > div {
+    grid-column: auto;
+  }
+  .prevention-programme__ghost {
+    top: auto;
+    bottom: -0.2em;
+  }
+}

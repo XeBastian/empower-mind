@@ -1,0 +1,107 @@
+.empower-emblem {
+  position: relative;
+  width: min(100%, 32rem);
+  aspect-ratio: 1;
+  justify-self: end;
+}
+
+.empower-emblem__orbit {
+  position: absolute;
+  border: 1px solid var(--blue-300);
+  border-radius: 50%;
+}
+
+.empower-emblem__orbit::before {
+  position: absolute;
+  inset: 12%;
+  border: 1px dashed var(--blue-500);
+  border-radius: 50%;
+  content: '';
+}
+
+.empower-emblem__orbit i {
+  position: absolute;
+  top: 50%;
+  right: -0.45rem;
+  width: 0.9rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--blue-700);
+}
+
+.empower-emblem__orbit--a {
+  inset: 3%;
+  animation: empower-orbit 28s linear infinite;
+}
+
+.empower-emblem__orbit--b {
+  inset: 21%;
+  border-color: var(--blue-700);
+  animation: empower-orbit 19s linear infinite reverse;
+}
+
+.empower-emblem__centre {
+  position: absolute;
+  z-index: 2;
+  inset: 32%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 0.8rem;
+  border: 1px solid var(--blue-300);
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 1rem 3rem rgba(23, 33, 59, 0.12);
+}
+
+.empower-emblem__centre img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.empower-emblem__label {
+  position: absolute;
+  z-index: 3;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--blue-300);
+  background: var(--white);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.empower-emblem__label--universities {
+  top: 12%;
+  left: 7%;
+}
+
+.empower-emblem__label--schools {
+  top: 27%;
+  right: 0;
+}
+
+.empower-emblem__label--youth {
+  bottom: 9%;
+  left: 20%;
+}
+
+@keyframes empower-orbit {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (max-width: 48rem) {
+  .empower-emblem {
+    width: min(88vw, 26rem);
+    justify-self: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .empower-emblem__orbit {
+    animation: none;
+  }
+}
